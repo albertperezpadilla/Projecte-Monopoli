@@ -37,8 +37,8 @@ jugadors = {
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
-        'total casas': 0,
-        'total hoteles': 0,
+        'total casas': 2,
+        'total hoteles': 2,
     }
 }
 
@@ -206,4 +206,37 @@ dic_carrers = {
     }
 }
 
-del jugadors["groc"]
+#CASILLAS ESPECIALES
+def sortida(color):
+    jugadors[color]["diners"] += 200
+#print(sortida("blau"))
+
+
+
+#FUNCIONES SUPORT
+
+
+def anar_sortida(color):
+    #HAY QUE HACER QUE VAYA  A LA CASILLA DE SALIDA + 200€  
+    sortida(color)
+
+def sort(color):
+    cartes_sort = ['sortir_presó','anar_presó','anar_sortida','tres_enrere','reparacions_propietat','alcalde']
+    carta = random.choice(cartes_sort)
+    jugadors[color]["cartes"].append(carta)
+    return jugadors[color]
+print(sort("blau")) 
+
+def reparacions(color):
+    precio = 25 * jugadors[color]["total casas"]
+    precio = precio + (100 * jugadors[color]["total hoteles"])
+    jugadors[color]["diners"] -= precio
+    banca["diners"] += precio
+    
+
+    return banca,jugadors[color]
+    #25 por casa
+#print("REPARACIONS")
+#print(reparacions("blau"))
+def alcalde(color):
+    return
