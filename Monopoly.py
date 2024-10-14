@@ -66,7 +66,7 @@ llista_preus = {
     "Aragó": {
         "Ll. Casa": 25,
         "Ll. Hotel": 25,
-        "Cmp. Trrny": 50,
+        "Cmp. Trrny": 60,
         "Cmp. Casa": 375,
         "Cmp. Hotel": 285
     },
@@ -110,7 +110,7 @@ llista_preus = {
         "Ll. Hotel": 35,
         "Cmp. Trrny": 80,
         "Cmp. Casa": 525,
-        "Cmp. Hotel": 250
+        "Cmp. Hotel": 340
     },
     "Balmes": {
         "Ll. Casa": 50,
