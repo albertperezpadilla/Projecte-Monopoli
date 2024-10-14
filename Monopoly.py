@@ -7,34 +7,33 @@ banca = {
     'diners': 0,
     'carrers' : ['Lauria', 'Rosselló', 'Marina',' Consell de cent','Muntaner', 'Aribau', 'Sant Joan', 'Aragó','Urquinaona', 'Fontana', 'Les Rambles',' Plaça Catalunya', 'Portal de lÀngel',' Via Augusta', 'Balmes', 'Passeig de Gràcia']
 }
-
-jugador_groc =  {
-        'color': 'groc',
+jugadors = {
+    "groc":  {
+        'inicial': 'G',
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
-}
-
-jugador_taronja =  {
-        'color': 'taronja',
+    },
+    "taronja":  {
+        'inicial': 'T',
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
-}
-
-jugador_vermell =  {
-        'color': 'vermell',
+    },
+    "vermell":  {
+        'inical': 'V',
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
-}
-
-jugador_blau =  {
-        'color': 'blau',
+    },
+    "blau": {
+        'incial': 'B',
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
+    }
 }
+
 
 #Direccionario de direccionarios de los precios de cada calle
 dic_carrers = {
