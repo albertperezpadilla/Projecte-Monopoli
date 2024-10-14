@@ -19,14 +19,14 @@ llista_preus = {
         "Ll. Hotel": 15,
         "Cmp. Trrny": 50,
         "Cmp. Casa": 200,
-        "Cmp. Hotel": 250,
+        "Cmp. Hotel": 250
     },
     "Roselló": {
         "Ll. Casa": 10,
         "Ll. Hotel": 15,
         "Cmp. Trrny": 50,
         "Cmp. Casa": 225,
-        "Cmp. Hotel": 255,
+        "Cmp. Hotel": 255
     },
     "Marina": {
         "Ll. Casa": 15,
@@ -35,7 +35,7 @@ llista_preus = {
         "Cmp. Casa": 250,
         "Cmp. Hotel": 260
     },
-    "C. de cent": {
+    "Consell de cent": {
         "Ll. Casa": 15,
         "Ll. Hotel": 20,
         "Cmp. Trrny": 50,
@@ -66,7 +66,7 @@ llista_preus = {
     "Aragó": {
         "Ll. Casa": 25,
         "Ll. Hotel": 25,
-        "Cmp. Trrny": 50,
+        "Cmp. Trrny": 60,
         "Cmp. Casa": 375,
         "Cmp. Hotel": 285
     },
@@ -91,14 +91,14 @@ llista_preus = {
         "Cmp. Casa": 450,
         "Cmp. Hotel": 310
     },
-    "Pl. Catalunya": {
+    "Plaça Catalunya": {
         "Ll. Casa": 35,
         "Ll. Hotel": 30,
         "Cmp. Trrny": 70,
         "Cmp. Casa": 475,
         "Cmp. Hotel": 320
     },
-    "P. Àngel": {
+    "Portal de l'Àngel": {
         "Ll. Casa": 40,
         "Ll. Hotel": 35,
         "Cmp. Trrny": 80,
@@ -110,7 +110,7 @@ llista_preus = {
         "Ll. Hotel": 35,
         "Cmp. Trrny": 80,
         "Cmp. Casa": 525,
-        "Cmp. Hotel": 250
+        "Cmp. Hotel": 340
     },
     "Balmes": {
         "Ll. Casa": 50,
@@ -119,7 +119,7 @@ llista_preus = {
         "Cmp. Casa": 550,
         "Cmp. Hotel": 350
     },
-    "Pg. de Gràcia": {
+    "Passeig de Gràcia": {
         "Ll. Casa": 50,
         "Ll. Hotel": 50,
         "Cmp. Trrny": 80,
@@ -127,41 +127,3 @@ llista_preus = {
         "Cmp. Hotel": 360
     }
 }
-
-
-
-
-#JUGADORS
-banca = {
-    'diners': banc,
-    'carrers' : ['Lauria', 'Rosselló', 'Marina',' Consell de cent','Muntaner', 'Aribau', 'Sant Joan', 'Aragó','Urquinaona', 'Fontana', 'Les Rambles',' Plaça Catalunya', 'Portal de lÀngel',' Via Augusta', 'Balmes', 'Passeig de Gràcia']
-}
-
-jugador_groc =  {
-        'color': 'groc',
-        'diners': dgroc,
-        'cartes' : [],
-        'carrers': [],
-}
-
-jugador_taronja =  {
-        'color': 'taronja',
-        'diners': dtaronja,
-        'cartes' : [],
-        'carrers': [],
-}
-
-jugador_vermell =  {
-        'color': 'vermell',
-        'diners': dvermell,
-        'cartes' : [],
-        'carrers': [],
-}
-
-jugador_blau =  {
-        'color': 'blau',
-        'diners': dblau,
-        'cartes' : [],
-        'carrers': [],
-}
-
