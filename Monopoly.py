@@ -3,46 +3,35 @@
 import random
 
 #Variables del comienzo de la partida
-banc = 0
-if banc < 500000:
-    banc += 1000000
-
-dgroc = 2000
-dtaronja = 2000
-dvermell = 2000
-dblau= 2000
-
-#JUGADORS
-
 banca = {
-    'diners': banc,
+    'diners': 0,
     'carrers' : ['Lauria', 'Rosselló', 'Marina',' Consell de cent','Muntaner', 'Aribau', 'Sant Joan', 'Aragó','Urquinaona', 'Fontana', 'Les Rambles',' Plaça Catalunya', 'Portal de lÀngel',' Via Augusta', 'Balmes', 'Passeig de Gràcia']
 }
 
 jugador_groc =  {
         'color': 'groc',
-        'diners': dgroc,
+        'diners': 2000,
         'cartes' : [],
         'carrers': [],
 }
 
 jugador_taronja =  {
         'color': 'taronja',
-        'diners': dtaronja,
+        'diners': 2000,
         'cartes' : [],
         'carrers': [],
 }
 
 jugador_vermell =  {
         'color': 'vermell',
-        'diners': dvermell,
+        'diners': 2000,
         'cartes' : [],
         'carrers': [],
 }
 
 jugador_blau =  {
         'color': 'blau',
-        'diners': dblau,
+        'diners': 2000,
         'cartes' : [],
         'carrers': [],
 }
