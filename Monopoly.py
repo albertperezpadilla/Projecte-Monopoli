@@ -48,14 +48,16 @@ jugador_blau =  {
 }
 
 #Direccionario de direccionarios de los precios de cada calle
-llista_preus = {
+dic_carrers = {
     "Lauria": {
         "Ll. Casa": 10,
         "Ll. Hotel": 15,
         "Cmp. Trrny": 50,
         "Cmp. Casa": 200,
         "Cmp. Hotel": 250,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Roselló": {
         "Ll. Casa": 10,
@@ -63,7 +65,9 @@ llista_preus = {
         "Cmp. Trrny": 50,
         "Cmp. Casa": 225,
         "Cmp. Hotel": 255,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Marina": {
         "Ll. Casa": 15,
@@ -71,7 +75,9 @@ llista_preus = {
         "Cmp. Trrny": 50,
         "Cmp. Casa": 250,
         "Cmp. Hotel": 260,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "C. de cent": {
         "Ll. Casa": 15,
@@ -79,7 +85,9 @@ llista_preus = {
         "Cmp. Trrny": 50,
         "Cmp. Casa": 275,
         "Cmp. Hotel": 265,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Muntaner": {
         "Ll. Casa": 20,
@@ -87,7 +95,9 @@ llista_preus = {
         "Cmp. Trrny": 60,
         "Cmp. Casa": 300,
         "Cmp. Hotel": 270,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Aribau": {
         "Ll. Casa": 20,
@@ -95,7 +105,9 @@ llista_preus = {
         "Cmp. Trrny": 60,
         "Cmp. Casa": 325,
         "Cmp. Hotel": 275,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Sant Joan": {
         "Ll. Casa": 25,
@@ -103,7 +115,9 @@ llista_preus = {
         "Cmp. Trrny": 60,
         "Cmp. Casa": 350,
         "Cmp. Hotel": 280,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Aragó": {
         "Ll. Casa": 25,
@@ -111,7 +125,9 @@ llista_preus = {
         "Cmp. Trrny": 50,
         "Cmp. Casa": 375,
         "Cmp. Hotel": 285,
-        "Propiedatari": banca
+        "Propiedatari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Urquinaona": {
         "Ll. Casa": 30,
@@ -119,7 +135,9 @@ llista_preus = {
         "Cmp. Trrny": 70,
         "Cmp. Casa": 400,
         "Cmp. Hotel": 290,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Fontana": {
         "Ll. Casa": 30,
@@ -127,7 +145,9 @@ llista_preus = {
         "Cmp. Trrny": 70,
         "Cmp. Casa": 425,
         "Cmp. Hotel": 300,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Les Rambles": {
         "Ll. Casa": 35,
@@ -135,7 +155,9 @@ llista_preus = {
         "Cmp. Trrny": 70,
         "Cmp. Casa": 450,
         "Cmp. Hotel": 310,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Pl. Catalunya": {
         "Ll. Casa": 35,
@@ -143,7 +165,9 @@ llista_preus = {
         "Cmp. Trrny": 70,
         "Cmp. Casa": 475,
         "Cmp. Hotel": 320,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "P. Àngel": {
         "Ll. Casa": 40,
@@ -151,7 +175,9 @@ llista_preus = {
         "Cmp. Trrny": 80,
         "Cmp. Casa": 500,
         "Cmp. Hotel": 330,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Via Augusta": {
         "Ll. Casa": 40,
@@ -159,14 +185,19 @@ llista_preus = {
         "Cmp. Trrny": 80,
         "Cmp. Casa": 525,
         "Cmp. Hotel": 250,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Balmes": {
         "Ll. Casa": 50,
         "Ll. Hotel": 40,
         "Cmp. Trrny": 80,
         "Cmp. Casa": 550,
-        "Cmp. Hotel": 350
+        "Cmp. Hotel": 350,
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     },
     "Pg. de Gràcia": {
         "Ll. Casa": 50,
@@ -174,7 +205,9 @@ llista_preus = {
         "Cmp. Trrny": 80,
         "Cmp. Casa": 525,
         "Cmp. Hotel": 360,
-        "Propietari": banca
+        "Propietari": banca,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0
     }
 }
 
