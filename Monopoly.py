@@ -13,27 +13,34 @@ jugadors = {
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
+        'total casas': 0,
+        'total hoteles': 0,
     },
     "taronja":  {
         'inicial': 'T',
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
+        'total casas': 0,
+        'total hoteles': 0,
     },
     "vermell":  {
         'inical': 'V',
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
+        'total casas': 0,
+        'total hoteles': 0,
     },
     "blau": {
         'incial': 'B',
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
+        'total casas': 0,
+        'total hoteles': 0,
     }
 }
-
 
 #Direccionario de direccionarios de los precios de cada calle
 dic_carrers = {
@@ -199,3 +206,4 @@ dic_carrers = {
     }
 }
 
+del jugadors["groc"]
