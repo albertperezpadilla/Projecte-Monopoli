@@ -19,14 +19,14 @@ llista_preus = {
         "Ll. Hotel": 15,
         "Cmp. Trrny": 50,
         "Cmp. Casa": 200,
-        "Cmp. Hotel": 250
+        "Cmp. Hotel": 250,
     },
     "Roselló": {
         "Ll. Casa": 10,
         "Ll. Hotel": 15,
         "Cmp. Trrny": 50,
         "Cmp. Casa": 225,
-        "Cmp. Hotel": 255
+        "Cmp. Hotel": 255,
     },
     "Marina": {
         "Ll. Casa": 15,
@@ -127,3 +127,41 @@ llista_preus = {
         "Cmp. Hotel": 360
     }
 }
+
+
+
+
+#JUGADORS
+banca = {
+    'diners': banc,
+    'carrers' : ['Lauria', 'Rosselló', 'Marina',' Consell de cent','Muntaner', 'Aribau', 'Sant Joan', 'Aragó','Urquinaona', 'Fontana', 'Les Rambles',' Plaça Catalunya', 'Portal de lÀngel',' Via Augusta', 'Balmes', 'Passeig de Gràcia']
+}
+
+jugador_groc =  {
+        'color': 'groc',
+        'diners': dgroc,
+        'cartes' : [],
+        'carrers': [],
+}
+
+jugador_taronja =  {
+        'color': 'taronja',
+        'diners': dtaronja,
+        'cartes' : [],
+        'carrers': [],
+}
+
+jugador_vermell =  {
+        'color': 'vermell',
+        'diners': dvermell,
+        'cartes' : [],
+        'carrers': [],
+}
+
+jugador_blau =  {
+        'color': 'blau',
+        'diners': dblau,
+        'cartes' : [],
+        'carrers': [],
+}
+
