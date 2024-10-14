@@ -35,7 +35,7 @@ llista_preus = {
         "Cmp. Casa": 250,
         "Cmp. Hotel": 260
     },
-    "C. de cent": {
+    "Consell de cent": {
         "Ll. Casa": 15,
         "Ll. Hotel": 20,
         "Cmp. Trrny": 50,
@@ -91,14 +91,14 @@ llista_preus = {
         "Cmp. Casa": 450,
         "Cmp. Hotel": 310
     },
-    "Pl. Catalunya": {
+    "Plaça Catalunya": {
         "Ll. Casa": 35,
         "Ll. Hotel": 30,
         "Cmp. Trrny": 70,
         "Cmp. Casa": 475,
         "Cmp. Hotel": 320
     },
-    "P. Àngel": {
+    "Portal de l'Àngel": {
         "Ll. Casa": 40,
         "Ll. Hotel": 35,
         "Cmp. Trrny": 80,
@@ -119,7 +119,7 @@ llista_preus = {
         "Cmp. Casa": 550,
         "Cmp. Hotel": 350
     },
-    "Pg. de Gràcia": {
+    "Passeig de Gràcia": {
         "Ll. Casa": 50,
         "Ll. Hotel": 50,
         "Cmp. Trrny": 80,
