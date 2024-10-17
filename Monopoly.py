@@ -272,7 +272,7 @@ def taulellDibuixar():
             casa[posicio_carrer] = "----"
 
         #HOTELES CASAS LADOS:
-        if posicio_carrer in [4, 5, 6, 7, 12,13,14,15]:
+        if posicio_carrer in [7, 8, 10, 11, 19, 20, 22, 23]:
             if  num_casa > 0:
                 casa[posicio_carrer] = str(num_casa) + "C" 
             if num_hotels > 0:
@@ -287,39 +287,31 @@ def taulellDibuixar():
 
 
     print(f"""
-                +--------+----{casa[8]}+----{casa[9]}+--------+----{casa[10]}+---{casa[11]}+---------+   "Banca":
+                +--------+----{casa[13]}+----{casa[14]}+--------+----{casa[16]}+---{casa[17]}+---------+   "Banca":
                 |Parking |Urquinao|Fontana |Sort    |Rambles |Pl.Cat  |Anr pró |    Diners: {banca['diners']}
                 |{t[12]}  |{t[13]}  |{t[14]}  |{t[15]}  |{t[16]}  |{t[17]}  |{t[18]}  |
                 +--------+--------+--------+--------+--------+--------+--------+jugador blau:
-                |Aragó  {casa[7]}                                            | Angel {casa[12]}    
-                |{t[11]} {hotel[7]}                                            |{t[19]} {hotel[12]}  
+                |Aragó  {casa[11]}                                            | Angel {casa[19]}    
+                |{t[11]} {hotel[11]}                                            |{t[19]} {hotel[19]}  
                 +--------+                                            +--------+          
-                |S.Joan {casa[6]}                                            |Augusta{casa[13]}
-                |{t[10]} {hotel[6]}                                            |{t[20]} {hotel[13]}
+                |S.Joan {casa[10]}                                            |Augusta{casa[20]}
+                |{t[10]} {hotel[10]}                                            |{t[20]} {hotel[20]}
                 +--------+                                            +--------+
                 |Caixa   |                                            |Caixa   |
                 |{t[9]}  |                                            |{t[21]}  |
                 +--------+                                            +--------+
-                |Aribau {casa[5]}                                            |Balmes {casa[14]}
-                |{t[8]} {hotel[5]}                                            |{t[22]} {hotel[14]}
+                |Aribau {casa[8]}                                            |Balmes {casa[22]}
+                |{t[8]} {hotel[8]}                                            |{t[22]} {hotel[22]}
                 +--------+                                            +--------+
-                |Muntan {casa[4]}                                            |Gracia {casa[15]}
-                |{t[7]} {hotel[4]}                                            |{t[23]} {hotel[15]}
-                +--------+----{casa[3]}+----{casa[2]}+--------+----{casa[1]}+----{casa[0]}+--------+
+                |Muntan {casa[7]}                                            |Gracia {casa[23]}
+                |{t[7]} {hotel[7]}                                            |{t[23]} {hotel[23]}
+                +--------+----{casa[5]}+----{casa[4]}+--------+----{casa[2]}+----{casa[1]}+--------+
                 |{t[6]}  |{t[5]}  |{t[4]}  |{t[3]}  |{t[2]}  |{t[1]}  |{t[0]}  |
                 |Presó   |Consell |Marina  |Sort    |Rosell  |Lauria  |Sortida |
                 +--------+--------+--------+--------+--------+--------+--------+
     """)
 
-
-
-
-
-
-
 taulellDibuixar()
-
-
 
 #CASILLAS ESPECIALES
 def sortida(color):
