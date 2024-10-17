@@ -59,7 +59,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 1,
         "Num. Hoteles": 0,
-        'posicio': 0
+        'posicio': 1
 
     },
     "Roselló": {
@@ -71,7 +71,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 1,
         "Num. Hoteles": 0,
-        'posicio': 1
+        'posicio': 2
     },
     "Marina": {
         "Ll. Casa": 15,
@@ -82,7 +82,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 1,
         "Num. Hoteles": 0,
-        'posicio': 2
+        'posicio': 4
     },
     "C. de cent": {
         "Ll. Casa": 15,
@@ -93,7 +93,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 1,
         "Num. Hoteles": 1,
-        'posicio': 3
+        'posicio': 5
     },
     "Muntaner": {
         "Ll. Casa": 20,
@@ -104,7 +104,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 1,
         "Num. Hoteles": 1,
-        'posicio': 4
+        'posicio': 7
     },
     "Aribau": {
         "Ll. Casa": 20,
@@ -115,7 +115,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 0,
         "Num. Hoteles": 0,
-        'posicio': 5
+        'posicio': 8
     },
     "Sant Joan": {
         "Ll. Casa": 25,
@@ -126,7 +126,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 0,
         "Num. Hoteles": 0,
-        'posicio': 6
+        'posicio': 10
     },
     "Aragó": {
         "Ll. Casa": 25,
@@ -137,7 +137,7 @@ dic_carrers = {
         "Propiedatari": banca,
         "Num. Cases": 0,
         "Num. Hoteles": 0,
-        'posicio': 7
+        'posicio': 11
     },
     "Urquinaona": {
         "Ll. Casa": 30,
@@ -148,7 +148,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 1,
         "Num. Hoteles": 1,
-        'posicio': 8
+        'posicio': 13
     },
     "Fontana": {
         "Ll. Casa": 30,
@@ -159,7 +159,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 0,
         "Num. Hoteles": 0,
-        'posicio': 9
+        'posicio': 14
     },
     "Les Rambles": {
         "Ll. Casa": 35,
@@ -170,7 +170,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 0,
         "Num. Hoteles": 0,
-        'posicio': 10
+        'posicio': 16
     },
     "Pl. Catalunya": {
         "Ll. Casa": 35,
@@ -181,7 +181,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 0,
         "Num. Hoteles": 0,
-        'posicio': 11
+        'posicio': 17
     },
     "P. Àngel": {
         "Ll. Casa": 40,
@@ -192,7 +192,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 0,
         "Num. Hoteles": 0,
-        'posicio': 12
+        'posicio': 19
     },
     "Via Augusta": {
         "Ll. Casa": 40,
@@ -203,7 +203,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 0,
         "Num. Hoteles": 0,
-        'posicio': 13
+        'posicio': 20
     },
     "Balmes": {
         "Ll. Casa": 50,
@@ -214,7 +214,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 1,
         "Num. Hoteles": 0,
-        'posicio': 14
+        'posicio': 22
     },
     "Pg. de Gràcia": {
         "Ll. Casa": 50,
@@ -225,7 +225,7 @@ dic_carrers = {
         "Propietari": banca,
         "Num. Cases": 1,
         "Num. Hoteles": 1,
-        'posicio': 15
+        'posicio': 23
     }
 }
 
