@@ -3,6 +3,8 @@
 import random
 
 #Variables del comienzo de la partida
+
+historial = []
 banca = {
     'diners': 0,
     'carrers' : ['Lauria', 'Rosselló', 'Marina',' Consell de cent','Muntaner', 'Aribau', 'Sant Joan', 'Aragó','Urquinaona', 'Fontana', 'Les Rambles',' Plaça Catalunya', 'Portal de lÀngel',' Via Augusta', 'Balmes', 'Passeig de Gràcia']
@@ -15,6 +17,7 @@ jugadors = {
         'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
+        'posicio': 0,
     },
     "taronja":  {
         'inicial': 'T',
@@ -23,22 +26,25 @@ jugadors = {
         'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
+        'posicio': 0,
     },
     "vermell":  {
-        'inical': 'V',
+        'inicial': 'V',
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
+        'posicio': 0,
     },
     "blau": {
-        'incial': 'B',
+        'inicial': 'B',
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
         'total casas': 2,
         'total hoteles': 2,
+        'posicio': 0,
     }
 }
 
@@ -51,8 +57,10 @@ dic_carrers = {
         "Cmp. Casa": 200,
         "Cmp. Hotel": 250,
         "Propietari": banca,
-        "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Cases": 1,
+        "Num. Hoteles": 0,
+        'posicio': 0
+
     },
     "Roselló": {
         "Ll. Casa": 10,
@@ -61,8 +69,9 @@ dic_carrers = {
         "Cmp. Casa": 225,
         "Cmp. Hotel": 255,
         "Propietari": banca,
-        "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Cases": 1,
+        "Num. Hoteles": 0,
+        'posicio': 1
     },
     "Marina": {
         "Ll. Casa": 15,
@@ -71,8 +80,9 @@ dic_carrers = {
         "Cmp. Casa": 250,
         "Cmp. Hotel": 260,
         "Propietari": banca,
-        "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Cases": 1,
+        "Num. Hoteles": 0,
+        'posicio': 2
     },
     "C. de cent": {
         "Ll. Casa": 15,
@@ -81,8 +91,9 @@ dic_carrers = {
         "Cmp. Casa": 275,
         "Cmp. Hotel": 265,
         "Propietari": banca,
-        "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Cases": 1,
+        "Num. Hoteles": 1,
+        'posicio': 3
     },
     "Muntaner": {
         "Ll. Casa": 20,
@@ -91,8 +102,9 @@ dic_carrers = {
         "Cmp. Casa": 300,
         "Cmp. Hotel": 270,
         "Propietari": banca,
-        "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Cases": 1,
+        "Num. Hoteles": 1,
+        'posicio': 4
     },
     "Aribau": {
         "Ll. Casa": 20,
@@ -102,7 +114,8 @@ dic_carrers = {
         "Cmp. Hotel": 275,
         "Propietari": banca,
         "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Hoteles": 0,
+        'posicio': 5
     },
     "Sant Joan": {
         "Ll. Casa": 25,
@@ -112,7 +125,8 @@ dic_carrers = {
         "Cmp. Hotel": 280,
         "Propietari": banca,
         "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Hoteles": 0,
+        'posicio': 6
     },
     "Aragó": {
         "Ll. Casa": 25,
@@ -122,7 +136,8 @@ dic_carrers = {
         "Cmp. Hotel": 285,
         "Propiedatari": banca,
         "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Hoteles": 0,
+        'posicio': 7
     },
     "Urquinaona": {
         "Ll. Casa": 30,
@@ -131,8 +146,9 @@ dic_carrers = {
         "Cmp. Casa": 400,
         "Cmp. Hotel": 290,
         "Propietari": banca,
-        "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Cases": 1,
+        "Num. Hoteles": 1,
+        'posicio': 8
     },
     "Fontana": {
         "Ll. Casa": 30,
@@ -142,7 +158,8 @@ dic_carrers = {
         "Cmp. Hotel": 300,
         "Propietari": banca,
         "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Hoteles": 0,
+        'posicio': 9
     },
     "Les Rambles": {
         "Ll. Casa": 35,
@@ -152,7 +169,8 @@ dic_carrers = {
         "Cmp. Hotel": 310,
         "Propietari": banca,
         "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Hoteles": 0,
+        'posicio': 10
     },
     "Pl. Catalunya": {
         "Ll. Casa": 35,
@@ -162,7 +180,8 @@ dic_carrers = {
         "Cmp. Hotel": 320,
         "Propietari": banca,
         "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Hoteles": 0,
+        'posicio': 11
     },
     "P. Àngel": {
         "Ll. Casa": 40,
@@ -172,7 +191,8 @@ dic_carrers = {
         "Cmp. Hotel": 330,
         "Propietari": banca,
         "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Hoteles": 0,
+        'posicio': 12
     },
     "Via Augusta": {
         "Ll. Casa": 40,
@@ -182,7 +202,8 @@ dic_carrers = {
         "Cmp. Hotel": 250,
         "Propietari": banca,
         "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Hoteles": 0,
+        'posicio': 13
     },
     "Balmes": {
         "Ll. Casa": 50,
@@ -191,8 +212,9 @@ dic_carrers = {
         "Cmp. Casa": 550,
         "Cmp. Hotel": 350,
         "Propietari": banca,
-        "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Cases": 1,
+        "Num. Hoteles": 0,
+        'posicio': 14
     },
     "Pg. de Gràcia": {
         "Ll. Casa": 50,
@@ -201,24 +223,118 @@ dic_carrers = {
         "Cmp. Casa": 525,
         "Cmp. Hotel": 360,
         "Propietari": banca,
-        "Num. Cases": 0,
-        "Num. Hoteles": 0
+        "Num. Cases": 1,
+        "Num. Hoteles": 1,
+        'posicio': 15
     }
 }
 
+
+def mostrar_historial():
+    global historial
+    for i in historial:
+        print(i + '\n')
+    if len(historial) > 14:  
+        historial.pop(0)
+def afegir_historial(accio):
+    historial.append(accio)
+def ordre_jugades():
+        colors = ['G','T','V','B']
+        random.shuffle(colors)
+        return colors           
+
+print(ordre_jugades())
+
+def taulellDibuixar():
+    t = []
+    casa = []
+    hotel = []
+    for i in range(0, 24):
+        t.append("")
+        casa.append("")
+        hotel.append("")  # Casillas vacías 
+        
+    for jugador in jugadors:
+        color = jugadors[jugador]['inicial']
+        posicio = jugadors[jugador]['posicio']
+        t[posicio] += color
+
+    for carrer in dic_carrers:
+        num_casa = dic_carrers[carrer]['Num. Cases']
+        num_hotels = dic_carrers[carrer]['Num. Hoteles']
+        print(num_hotels)
+        posicio_carrer = dic_carrers[carrer]['posicio'] # posicion calle
+        if num_hotels == 0 and num_casa > 0:
+            casa[posicio_carrer] = "--" + str(num_casa) + "C" 
+        elif num_casa > 0 and num_hotels > 0:
+            casa[posicio_carrer] = str(num_hotels) + "H" + (str(num_casa)) + "C"
+        else:
+            casa[posicio_carrer] = "----"
+
+        #HOTELES CASAS LADOS:
+        if posicio_carrer in [4, 5, 6, 7, 12,13,14,15]:
+            if  num_casa > 0:
+                casa[posicio_carrer] = str(num_casa) + "C" 
+            if num_hotels > 0:
+                hotel[posicio_carrer] = str(num_hotels) + "H" 
+
+            else:
+                casa[posicio_carrer] = " |"
+                hotel[posicio_carrer] = " |"
+    # Ajuste de espacios para los jugadores
+    for i in range(len(t)):
+        t[i] = t[i].ljust(6)
+
+
+    print(f"""
+                +--------+----{casa[8]}+----{casa[9]}+--------+----{casa[10]}+---{casa[11]}+---------+   "Banca":
+                |Parking |Urquinao|Fontana |Sort    |Rambles |Pl.Cat  |Anr pró |    Diners: {banca['diners']}
+                |{t[12]}  |{t[13]}  |{t[14]}  |{t[15]}  |{t[16]}  |{t[17]}  |{t[18]}  |
+                +--------+--------+--------+--------+--------+--------+--------+jugador blau:
+                |Aragó  {casa[7]}                                            | Angel {casa[12]}    
+                |{t[11]} {hotel[7]}                                            |{t[19]} {hotel[12]}  
+                +--------+                                            +--------+          
+                |S.Joan {casa[6]}                                            |Augusta{casa[13]}
+                |{t[10]} {hotel[6]}                                            |{t[20]} {hotel[13]}
+                +--------+                                            +--------+
+                |Caixa   |                                            |Caixa   |
+                |{t[9]}  |                                            |{t[21]}  |
+                +--------+                                            +--------+
+                |Aribau {casa[5]}                                            |Balmes {casa[14]}
+                |{t[8]} {hotel[5]}                                            |{t[22]} {hotel[14]}
+                +--------+                                            +--------+
+                |Muntan {casa[4]}                                            |Gracia {casa[15]}
+                |{t[7]} {hotel[4]}                                            |{t[23]} {hotel[15]}
+                +--------+----{casa[3]}+----{casa[2]}+--------+----{casa[1]}+----{casa[0]}+--------+
+                |{t[6]}  |{t[5]}  |{t[4]}  |{t[3]}  |{t[2]}  |{t[1]}  |{t[0]}  |
+                |Presó   |Consell |Marina  |Sort    |Rosell  |Lauria  |Sortida |
+                +--------+--------+--------+--------+--------+--------+--------+
+    """)
+
+
+
+
+
+
+
+taulellDibuixar()
+
+
+
 #CASILLAS ESPECIALES
 def sortida(color):
-    jugadors[color]["diners"] += 200
-#print(sortida("blau"))
-
-
+    if jugadors[color]['posicio'] == 0:
+        jugadors[color]['diners'] += 200
+#sortida("blau")
 
 #FUNCIONES SUPORT
 
 
 def anar_sortida(color):
-    #HAY QUE HACER QUE VAYA  A LA CASILLA DE SALIDA + 200€  
+    jugadors[color]['posicio'] = 0
     sortida(color)
+    print(f"El jugador {color} ha anat a Sortida, rep +200€")
+#anar_sortida("blau")
 
 def sort(color):
     cartes_sort = ['sortir_presó','anar_presó','anar_sortida','tres_enrere','reparacions_propietat','alcalde']
@@ -237,6 +353,6 @@ def reparacions(color):
     return banca,jugadors[color]
     #25 por casa
 #print("REPARACIONS")
-#print(reparacions("blau"))
+print(reparacions("blau"))
 def alcalde(color):
     return
