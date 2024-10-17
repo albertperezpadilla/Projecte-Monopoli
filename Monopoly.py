@@ -56,7 +56,7 @@ dic_carrers = {
         "Cmp. Trrny": 50,
         "Cmp. Casa": 200,
         "Cmp. Hotel": 250,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 1,
         "Num. Hoteles": 0,
         'posicio': 1
@@ -68,7 +68,7 @@ dic_carrers = {
         "Cmp. Trrny": 50,
         "Cmp. Casa": 225,
         "Cmp. Hotel": 255,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 1,
         "Num. Hoteles": 0,
         'posicio': 2
@@ -79,7 +79,7 @@ dic_carrers = {
         "Cmp. Trrny": 50,
         "Cmp. Casa": 250,
         "Cmp. Hotel": 260,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 1,
         "Num. Hoteles": 0,
         'posicio': 4
@@ -90,7 +90,7 @@ dic_carrers = {
         "Cmp. Trrny": 50,
         "Cmp. Casa": 275,
         "Cmp. Hotel": 265,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 1,
         "Num. Hoteles": 1,
         'posicio': 5
@@ -101,7 +101,7 @@ dic_carrers = {
         "Cmp. Trrny": 60,
         "Cmp. Casa": 300,
         "Cmp. Hotel": 270,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 1,
         "Num. Hoteles": 1,
         'posicio': 7
@@ -112,7 +112,7 @@ dic_carrers = {
         "Cmp. Trrny": 60,
         "Cmp. Casa": 325,
         "Cmp. Hotel": 275,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 0,
         "Num. Hoteles": 0,
         'posicio': 8
@@ -123,7 +123,7 @@ dic_carrers = {
         "Cmp. Trrny": 60,
         "Cmp. Casa": 350,
         "Cmp. Hotel": 280,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 0,
         "Num. Hoteles": 0,
         'posicio': 10
@@ -134,7 +134,7 @@ dic_carrers = {
         "Cmp. Trrny": 50,
         "Cmp. Casa": 375,
         "Cmp. Hotel": 285,
-        "Propiedatari": banca,
+        "Propiedatari": "banca",
         "Num. Cases": 0,
         "Num. Hoteles": 0,
         'posicio': 11
@@ -145,7 +145,7 @@ dic_carrers = {
         "Cmp. Trrny": 70,
         "Cmp. Casa": 400,
         "Cmp. Hotel": 290,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 1,
         "Num. Hoteles": 1,
         'posicio': 13
@@ -156,7 +156,7 @@ dic_carrers = {
         "Cmp. Trrny": 70,
         "Cmp. Casa": 425,
         "Cmp. Hotel": 300,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 0,
         "Num. Hoteles": 0,
         'posicio': 14
@@ -167,7 +167,7 @@ dic_carrers = {
         "Cmp. Trrny": 70,
         "Cmp. Casa": 450,
         "Cmp. Hotel": 310,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 0,
         "Num. Hoteles": 0,
         'posicio': 16
@@ -178,7 +178,7 @@ dic_carrers = {
         "Cmp. Trrny": 70,
         "Cmp. Casa": 475,
         "Cmp. Hotel": 320,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 0,
         "Num. Hoteles": 0,
         'posicio': 17
@@ -189,7 +189,7 @@ dic_carrers = {
         "Cmp. Trrny": 80,
         "Cmp. Casa": 500,
         "Cmp. Hotel": 330,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 0,
         "Num. Hoteles": 0,
         'posicio': 19
@@ -200,7 +200,7 @@ dic_carrers = {
         "Cmp. Trrny": 80,
         "Cmp. Casa": 525,
         "Cmp. Hotel": 250,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 0,
         "Num. Hoteles": 0,
         'posicio': 20
@@ -211,7 +211,7 @@ dic_carrers = {
         "Cmp. Trrny": 80,
         "Cmp. Casa": 550,
         "Cmp. Hotel": 350,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 1,
         "Num. Hoteles": 0,
         'posicio': 22
@@ -222,7 +222,7 @@ dic_carrers = {
         "Cmp. Trrny": 80,
         "Cmp. Casa": 525,
         "Cmp. Hotel": 360,
-        "Propietari": banca,
+        "Propietari": "banca",
         "Num. Cases": 1,
         "Num. Hoteles": 1,
         'posicio': 23
