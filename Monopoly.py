@@ -125,3 +125,13 @@ def reparacions(color):
 print(reparacions("blau"))
 def alcalde(color):
     return
+
+#Hay que ordenar bien las funciones
+#Alquiler a pagar
+def totalPagar(posicio):
+    for dades_carrer in dic.carrers.values():
+        if dades_carrer['posicio'] == posicio:
+            ll_casas = dades_carrer["Ll. Casa"] * dades_carrer["Num. Cases"]
+            ll_hotels = dades_carrer["Ll. Hotel"] * dades_carrer["Num. Hoteles"]
+            total_lloguer = ll_casas + ll_hotels
+            return total_lloguer
