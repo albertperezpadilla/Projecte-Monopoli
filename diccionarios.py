@@ -13,7 +13,7 @@ jugadors = {
         'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
-        'posicio': 5,
+        'posicio': 0,
     },
     "taronja":  {
         'inicial': 'T',
@@ -38,8 +38,8 @@ jugadors = {
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
-        'total casas': 2,
-        'total hoteles': 2,
+        'total casas': 0,
+        'total hoteles': 0,
         'posicio': 0,
     }
 }
@@ -53,7 +53,7 @@ carrers = {
         "Cmp. Casa": 200,
         "Cmp. Hotel": 250,
         "Propietari": "banca",
-        "Num. Cases": 1,
+        "Num. Cases": 0,
         "Num. Hoteles": 0,
         'posicio': 1
 
@@ -65,7 +65,7 @@ carrers = {
         "Cmp. Casa": 225,
         "Cmp. Hotel": 255,
         "Propietari": "banca",
-        "Num. Cases": 1,
+        "Num. Cases": 0,
         "Num. Hoteles": 0,
         'posicio': 2
     },
@@ -76,7 +76,7 @@ carrers = {
         "Cmp. Casa": 250,
         "Cmp. Hotel": 260,
         "Propietari": "banca",
-        "Num. Cases": 1,
+        "Num. Cases": 0,
         "Num. Hoteles": 0,
         'posicio': 4
     },
@@ -87,8 +87,8 @@ carrers = {
         "Cmp. Casa": 275,
         "Cmp. Hotel": 265,
         "Propietari": "banca",
-        "Num. Cases": 1,
-        "Num. Hoteles": 1,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0,
         'posicio': 5
     },
     "Muntaner": {
@@ -98,8 +98,8 @@ carrers = {
         "Cmp. Casa": 300,
         "Cmp. Hotel": 270,
         "Propietari": "banca",
-        "Num. Cases": 1,
-        "Num. Hoteles": 1,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0,
         'posicio': 7
     },
     "Aribau": {
@@ -142,8 +142,8 @@ carrers = {
         "Cmp. Casa": 400,
         "Cmp. Hotel": 290,
         "Propietari": "banca",
-        "Num. Cases": 1,
-        "Num. Hoteles": 1,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0,
         'posicio': 13
     },
     "Fontana": {
@@ -208,7 +208,7 @@ carrers = {
         "Cmp. Casa": 550,
         "Cmp. Hotel": 350,
         "Propietari": "banca",
-        "Num. Cases": 1,
+        "Num. Cases": 0,
         "Num. Hoteles": 0,
         'posicio': 22
     },
@@ -219,8 +219,8 @@ carrers = {
         "Cmp. Casa": 525,
         "Cmp. Hotel": 360,
         "Propietari": "banca",
-        "Num. Cases": 1,
-        "Num. Hoteles": 1,
+        "Num. Cases": 0,
+        "Num. Hoteles": 0,
         'posicio': 23
     }
 }
