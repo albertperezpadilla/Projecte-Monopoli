@@ -171,21 +171,24 @@ def tres_enrere(color):
 def preso(color):
 
     if dic.jugadors[color]['posicio'] == 6:
-            afegir_historial(f"El jugador {color} ha caigut a la pressó")          
-            dic.jugadors[color]['empressonat'] = True
-            dic.jugadors[color]['torns_empressonat'] -= 1 
+            #si cae en prisión:
+            if not dic.jugadors[color]['empressonat']:
+                afegir_historial(f"El jugador {color} ha caigut a la pressó")          
+                dic.jugadors[color]['empressonat'] = True
+                dic.jugadors[color]['torns_empressonat'] = 3
+            else:
+                dic.jugadors[color]['torns_empressonat'] -= 1 
             dau1 = random.randint(1, 6)
             dau2 = random.randint(1, 6)
-            if dau1 == dau2:
-                dic.jugadors[color]['empressonat'] = False
-                dic.jugadors[color]['torns_empressonat'] = 0
-
-            if dic.jugadors[color]['torns_empressonat'] <= 0:
-                dic.jugadors[color]['empressonat'] = False
-                dic.jugadors[color]['torns_empressonat'] = 0
-            else:
-                afegir_historial(f"{color} segueix a la presó, li queden {dic.jugadors[color]['torns_empressonat']} torns.")
-                return False
+            
+            #logica de salida
+            if dau1 == dau2 or dic.jugadors[color]['torns_empressonat'] <= 0:
+                if "sortir_presó" in dic.jugadors[color]['cartes'] :
+                        dic.jugadors[color]['cartes'].remove("sortir_presó")
+                sortida_preso(color)
+                return
+            afegir_historial(f"{color} segueix a la presó, li queden {dic.jugadors[color]['torns_empressonat']} torns.")
+            return False
     else:
         dic.jugadors[color]['torns_empressonat'] = 3
         dic.jugadors[color]['empressonat'] = True
@@ -196,10 +199,9 @@ def anar_preso(color):
     dic.jugadors[color]['posicio'] = 6
     preso(color)
 
-def sortir_preso(color):
+def sortida_preso(color):
         dic.jugadors[color]['empressonat'] = False
         dic.jugadors[color]['torns_empressonat'] = 0
-        dic.jugadors[color]['cartes'].remove("sortir_presó")
 #sortida("blau")
 
 #FUNCIONES SUPORT
