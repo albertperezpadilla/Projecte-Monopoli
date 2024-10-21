@@ -13,7 +13,7 @@ jugadors = {
         'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
-        'posicio': 5,
+        'posicio': 0,
         'empressonat': False,
         'torns_empressonat': 0,
     },
