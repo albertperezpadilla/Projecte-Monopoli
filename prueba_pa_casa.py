@@ -224,7 +224,7 @@ def trucs():
     opcio = input("Opcio: ")
     while opcio not in opcions:
         print("Opció incorrecte")
-        opcio = input("Opcio: ")
+        opcio = input("Opcio: ").lower()
         if opcio == opcions[0]:
             print("Digues el nom del carrer al que vols anar: ")
             nom_carrer = input("Anar a carrer")
@@ -233,4 +233,6 @@ def trucs():
                     posicio = dic.carrers[carrer]['posicio']
                     break 
             dic.jugadors['posicio'] = posicio
+        elif opcio == opcions[1]:
+            print("tmp")
 print("hola")
