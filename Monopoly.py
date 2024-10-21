@@ -6,7 +6,7 @@ import diccionarios as dic
 #Variables del comienzo de la partida
 
 historial = []
-
+ordenats = False
 
 def afegir_historial(accio):
     historial.append(accio)
@@ -122,11 +122,79 @@ def taulellDibuixar():
                 +--------+--------+--------+--------+--------+--------+--------+
     """)
 
+taulellDibuixar()
+
+def tirar_dados(color):
+    dau1 = random.randint(1,6)
+    dau2 = random.randint(1,6)
+    suma = dau1 + dau2
+    dic.jugadors[color]['posicio'] += suma 
+    afegir_historial(f"{color} ha tret {suma}")
 
 #CASILLAS ESPECIALES
 def sortida(color):
-    if dic.jugadors[color]['posicio'] == 0:
         dic.jugadors[color]['diners'] += 200
+
+def casillas_especiales(color):
+    pos = dic.jugadors[color]['posicio']
+    if pos == 0:
+        sortida(color)
+    if pos == 6:
+        preso(color)
+    if pos == 18:
+        anar_preso(color)
+    if pos == 12:
+        afegir_historial(f"{color} ha caigut al Parking")
+    if pos in [9,21]:
+        caixa(color)
+    if pos in [3,15]:
+        sort(color)
+
+
+#CARTES
+'''- Sortir de la presó: quan cau a la presó podrà seguir jugant (i perdrà aquesta opció)
+- Anar a la presó: el jugador va a la presó sense cobrar la sortida i sense jugar 3 torns
+- Anar a la sortida: el jugador va a la sortida i cobra els 200€
+- Anar tres espais endarrera'''
+
+#TRES ESPAIS ENRERRE:
+def tres_enrere(color):
+    afegir_historial(f"El jugador {color} ha anat tres caselles enrere")
+    dic.jugadors[color]['posicio'] -= 3       
+
+#LOGICA PRESÓ
+def preso(color):
+
+    if dic.jugadors[color]['posicio'] == 6:
+            afegir_historial(f"El jugador {color} ha caigut a la pressó")          
+            dic.jugadors[color]['empressonat'] = True
+            dic.jugadors[color]['torns_empressonat'] -= 1 
+            dau1 = random.randint(1, 6)
+            dau2 = random.randint(1, 6)
+            if dau1 == dau2:
+                dic.jugadors[color]['empressonat'] = False
+                dic.jugadors[color]['torns_empressonat'] = 0
+
+            if dic.jugadors[color]['torns_empressonat'] <= 0:
+                dic.jugadors[color]['empressonat'] = False
+                dic.jugadors[color]['torns_empressonat'] = 0
+            else:
+                afegir_historial(f"{color} segueix a la presó, li queden {dic.jugadors[color]['torns_empressonat']} torns.")
+                return False
+    else:
+        dic.jugadors[color]['torns_empressonat'] = 3
+        dic.jugadors[color]['empressonat'] = True
+        afegir_historial(f"{color} ha anat a la presó.")
+
+
+def anar_preso(color):
+    dic.jugadors[color]['posicio'] = 6
+    preso(color)
+
+def sortir_preso(color):
+        dic.jugadors[color]['empressonat'] = False
+        dic.jugadors[color]['torns_empressonat'] = 0
+        dic.jugadors[color]['cartes'].remove("sortir_presó")
 #sortida("blau")
 
 #FUNCIONES SUPORT
@@ -135,31 +203,64 @@ def sortida(color):
 def anar_sortida(color):
     dic.jugadors[color]['posicio'] = 0
     sortida(color)
-    print(f"El jugador {color} ha anat a Sortida, rep +200€")
+    afegir_historial(f"El jugador {color} ha anat a Sortida, rep +200€")
 #anar_sortida("blau")
 
-def sort(color):
-    cartes_sort = ['sortir_presó','anar_presó','anar_sortida','tres_enrere','reparacions_propietat','alcalde']
-    carta = random.choice(cartes_sort)
-    dic.jugadors[color]["cartes"].append(carta)
-    return dic.jugadors[color]
-print(sort("blau")) 
-
+    
 def reparacions(color):
     precio = 25 * dic.jugadors[color]["total casas"]
     precio = precio + (100 * dic.jugadors[color]["total hoteles"])
     dic.jugadors[color]["diners"] -= precio
     dic.banca["diners"] += precio
-    
+    afegir_historial(f"{color} ha fet reparacions a les seves construccions")    
 
     return dic.banca, dic.jugadors[color]
-    #25 por casa
-#print("REPARACIONS")
-print(reparacions("blau"))
 def alcalde(color):
+    for jugador in dic.jugadors:
+        dic.jugadors[jugador]['diners'] -= 50
+        dic.jugadors[color]['diners'] += 200
+    afegir_historial(f"{color} ha sigut escollit l'alcalde,rep 150€")
     return
+#SUERTE
+def sort(color):
+    cartes_sort = [f"sortir_presó','{anar_preso(color)}','{anar_sortida(color)}','{tres_enrere(color)}','{reparacions()}','{alcalde(color)}"]
+    carta = random.choice(cartes_sort)
+    if carta == "sortir_presó":
+        dic.jugadors[color]["cartes"].append(carta)
+        afegir_historial(f"{color} té la carta de sortir de la presó")    
+    return dic.jugadors[color]
+#CAIXA
 
-#Hay que ordenar bien las funciones
+'''- Sortir de la presó: quan cau a la presó podrà seguir jugant (i perdrà aquesta opció)
+- Anar a la presó: el jugador va a la presó sense cobrar la sortida i sense jugar 3 torns
+- Error de la banca al teu favor, guanyes 150€
+- Despeses mèdiques, pagues 50€
+- Despeses escolars, pagues 50€
+- Reparacions al carrer, pagues 40€
+- Concurs de bellesa, guanyes 10€'''
+def caixa(color):
+    cartes_caixa = [f"sortir_presó','{error_banca(color)}','{despesses_mediques(color)}','{despesses_escolars(color)}','{reparacions_carrers()}','{concurs(color)}"]
+    carta = random.choice(cartes_caixa)
+    if carta == "sortir_presó":
+        dic.jugadors[color]["cartes"].append(carta)
+        afegir_historial(f"{color} té la carta de sortir de la presó")    
+    return dic.jugadors[color]
+#FUNCIONS CAIXA:
+def error_banca(color):
+    dic.jugadors[color]['diners'] += 150
+    afegir_historial("Error de la banca al teu favor, guanyes 150€")
+def despesses_mediques(color):
+    dic.jugadors[color]['diners'] -= 50
+    afegir_historial("Despeses mediques, pagues 50€")
+def despesses_escolars(color):
+    dic.jugadors[color]['diners'] -= 50
+    afegir_historial("Despeses escolars, pagues 50€")
+def reparacions_carrers(color):
+    dic.jugadors[color]['diners'] -= 40
+    afegir_historial("reparacions al carrer, pagues 40€")
+def concurs(color):
+    dic.jugadors[color]['diners'] += 10
+    afegir_historial("Concurs de bellesa, guanyes 10€")
 #Alquiler a pagar
 def totalPagar(posicio):
     for dades_carrer in dic.carrers.values():
@@ -212,4 +313,3 @@ def opcions_jugador(color):
                             opcions.append(f"vendre a {tmp[jugador]['inicial']}")
     return opcions
 
-print("hola")

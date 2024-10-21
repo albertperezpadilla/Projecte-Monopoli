@@ -13,7 +13,9 @@ jugadors = {
         'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
-        'posicio': 0,
+        'posicio': 5,
+        'empressonat': False,
+        'torns_empressonat': 0,
     },
     "taronja":  {
         'inicial': 'T',
@@ -23,6 +25,8 @@ jugadors = {
         'total casas': 0,
         'total hoteles': 0,
         'posicio': 0,
+        'empressonat': False,
+        'torns_empressonat': 0,
     },
     "vermell":  {
         'inicial': 'V',
@@ -32,15 +36,19 @@ jugadors = {
         'total casas': 0,
         'total hoteles': 0,
         'posicio': 0,
+        'empressonat': False,
+        'torns_empressonat': 0,
     },
     "blau": {
         'inicial': 'B',
         'diners': 2000,
         'cartes' : [],
         'carrers': [],
-        'total casas': 0,
-        'total hoteles': 0,
+        'total casas': 2,
+        'total hoteles': 2,
         'posicio': 0,
+        'empressonat': False,
+        'torns_empressonat': 0,
     }
 }
 

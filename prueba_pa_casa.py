@@ -30,12 +30,15 @@ def dibuixa_historial():
     return historial_bien
 
 
-
-def ordre_jugades():
-        colors = ['G','T','V','B']
+def ordre_jugadors():
+    global ordenats
+    global colors 
+    if not ordenats:
+        colors = ['groc', 'taronja', 'vermell', 'blau']
         random.shuffle(colors)
-        return colors           
-    
+        ordenats = True  
+    return colors
+
 def mostrar_info(color):
     carrers = dic.jugadors[color]["carrers"]
     cartes = dic.jugadors[color]["cartes"]
@@ -44,13 +47,12 @@ def mostrar_info(color):
         carrers = "Res"
     if len(cartes) == 0:
         cartes = "Res"
-    return f'''
-            Carrers: {carrers}
-            Cartes: {cartes}
-            Diners: {diners} '''
-
-print(ordre_jugades())
-
+    info =  [carrers ,diners, cartes]
+    return info
+blau = mostrar_info("blau")
+taronja = mostrar_info("taronja")
+vermell = mostrar_info("vermell")
+groc = mostrar_info("blau")
 def taulellDibuixar():
     t = []
     casa = []
@@ -59,12 +61,14 @@ def taulellDibuixar():
         t.append("")
         casa.append("")
         hotel.append("")  # Casillas vacías 
-        
-    for jugador in dic.jugadors:
-        color = dic.jugadors[jugador]['inicial']
-        posicio = dic.jugadors[jugador]['posicio']
-        t[posicio] += color
-
+    colors = ordre_jugadors()
+    global ordenats
+    for color in colors:
+        inicial = dic.jugadors[color]['inicial']
+        posicio = dic.jugadors[color]['posicio']
+        posicio = posicio % 24
+        t[posicio] += inicial
+ 
     for carrer in dic.carrers:
         num_casa = dic.carrers[carrer]['Num. Cases']
         num_hotels = dic.carrers[carrer]['Num. Hoteles']
@@ -101,28 +105,27 @@ def taulellDibuixar():
                 +--------+----{casa[13]}+----{casa[14]}+--------+----{casa[16]}+---{casa[17]}+---------+   "Banca":
                 |Parking |Urquinao|Fontana |Sort    |Rambles |Pl.Cat  |Anr pró |    Diners: {dic.banca['diners']}
                 |{t[12]}  |{t[13]}  |{t[14]}  |{t[15]}  |{t[16]}  |{t[17]}  |{t[18]}  |
-                +--------+--------+--------+--------+--------+--------+--------+jugador blau: 
-                |Aragó  {casa[11]}> {log[0]} | Angel {casa[19]}    
-                |{t[11]} {hotel[11]}{log[1]}   |{t[19]} {hotel[19]}  
-                +--------+{log[2]}   +--------+          
-                |S.Joan {casa[10]}{log[3]}   |Augusta{casa[20]}
-                |{t[10]} {hotel[10]}> {log[4]} |{t[20]} {hotel[20]}
-                +--------+{log[5]}   +--------+
-                |Caixa   |{log[6]}   |Caixa   |
-                |{t[9]}  |{log[7]}   |{t[21]}  |
-                +--------+> {log[8]} +--------+
-                |Aribau {casa[8]}{log[9]}   |Balmes {casa[22]}
-                |{t[8]} {hotel[8]}{log[10]}   |{t[22]} {hotel[22]}
-                +--------+> {log[11]} +--------+
-                |Muntan {casa[7]}{log[12]}   |Gracia {casa[23]}
-                |{t[7]} {hotel[7]}{log[13]}   |{t[23]} {hotel[23]}
-                +--------+----{casa[5]}+----{casa[4]}+--------+----{casa[2]}+----{casa[1]}+--------+
+                +--------+--------+--------+--------+--------+--------+--------+>jugador blau: 
+                |Aragó  {casa[11]}> {log[0]} | Angel {casa[19]}Carrers:{blau[0]}
+                |{t[11]} {hotel[11]}{log[1]}   |{t[19]} {hotel[19]}Diners:{blau[1]}  
+                +--------+{log[2]}   +--------+Cartes:{blau[2]}          
+                |S.Joan {casa[10]}{log[3]}   |Augusta{casa[20]}>jugador Vermell:
+                |{t[10]} {hotel[10]}> {log[4]} |{t[20]} {hotel[20]}Carrers:{vermell[0]}
+                +--------+{log[5]}   +--------+Diners:{vermell[1]} 
+                |Caixa   |{log[6]}   |Caixa   |Cartes:{vermell[2]} 
+                |{t[9]}  |{log[7]}   |{t[21]}  |>jugador Groc:
+                +--------+> {log[8]} +--------+Carrers:{groc[0]}
+                |Aribau {casa[8]}{log[9]}   |Balmes {casa[22]}Diners:{groc[1]} 
+                |{t[8]} {hotel[8]}{log[10]}   |{t[22]} {hotel[22]}Cartes:{groc[2]} 
+                +--------+> {log[11]} +--------+>jugador Taronja:
+                |Muntan {casa[7]}{log[12]}   |Gracia {casa[23]}Carrers:{taronja[0]}
+                |{t[7]} {hotel[7]}{log[13]}   |{t[23]} {hotel[23]}Diners:{taronja[1]} 
+                +--------+----{casa[5]}+----{casa[4]}+--------+----{casa[2]}+----{casa[1]}+--------+Cartes:{taronja[2]} 
                 |{t[6]}  |{t[5]}  |{t[4]}  |{t[3]}  |{t[2]}  |{t[1]}  |{t[0]}  |
                 |Presó   |Consell |Marina  |Sort    |Rosell  |Lauria  |Sortida |
                 +--------+--------+--------+--------+--------+--------+--------+
     """)
-
-
+taulellDibuixar()
 #CASILLAS ESPECIALES
 def sortida(color):
     if dic.jugadors[color]['posicio'] == 0:
