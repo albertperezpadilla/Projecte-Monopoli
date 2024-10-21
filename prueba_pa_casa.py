@@ -214,5 +214,23 @@ def opcions_jugador(color):
                         if tmp[jugador]['diners'] >= totalVendre(color) * 0.9:
                             opcions.append(f"vendre a {tmp[jugador]['inicial']}")
     return opcions
-
+def trucs():
+    opcions = ["anar a casella o carrer",
+               "afegir cases","afegir hotels",
+               "seguent jugador",
+               "diners jugador", "diners banca"
+               ]
+    print(opcions)
+    opcio = input("Opcio: ")
+    while opcio not in opcions:
+        print("Opció incorrecte")
+        opcio = input("Opcio: ")
+        if opcio == opcions[0]:
+            print("Digues el nom del carrer al que vols anar: ")
+            nom_carrer = input("Anar a carrer")
+            for carrer in dic.carrers:
+                if dic.carrers[carrer] == nom_carrer:
+                    posicio = dic.carrers[carrer]['posicio']
+                    break 
+            dic.jugadors['posicio'] = posicio
 print("hola")
