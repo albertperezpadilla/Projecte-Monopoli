@@ -26,16 +26,6 @@ def dibuixa_historial():
 
     return historial_bien
 
-#Ordre jugadors
-def ordre_jugadors():
-    global ordenats
-    global colors 
-    if not mp.ordenats:
-        colors = ['groc', 'taronja', 'vermell', 'blau']
-        random.shuffle(colors)
-        ordenats = True  
-    return colors
-
 #Mostrar la unformacio dels jugadors
 def mostrar_info(color):
     carrers = dic.jugadors[color]["carrers"]

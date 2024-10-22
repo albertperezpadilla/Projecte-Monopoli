@@ -9,6 +9,7 @@ def totalPagar(posicio):
             ll_hotels = dades_carrer["Ll. Hotel"] * dades_carrer["Num. Hoteles"]
             total_lloguer = ll_casas + ll_hotels
             return total_lloguer
+        
 #Valor vender todas las propiedades a otro jugador/banca
 def totalVendre(color):
     preu_total = 0
@@ -21,3 +22,16 @@ def totalVendre(color):
         preu_hotels = num_hotels * dic.carrers[carrer]['Cmp. Hotel']
         preu_total += preu_terreny + preu_cases + preu_hotels
     return preu_total
+
+#Comprobar numero de casas i hoteles
+def comprobarCasas(nom_carrer, x):
+    x = int(x)
+    if dic.carrers[nom_carrer]["Num. Cases"] + x <= 4:
+        return True
+    return False
+
+def comprobarHoteles(nom_carrer, x):
+    x = int(x)
+    if dic.carrers[nom_carrer]["Num. Hoteles"] + x <= 2:
+        return True
+    return False

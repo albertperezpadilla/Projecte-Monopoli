@@ -3,7 +3,18 @@ import tablero as tb
 import diccionarios as dic
 import cartas as ct
 import uso_general as ug
+import Monopoly as mp
 import random
+
+#Ordre jugadors
+def ordre_jugadors():
+    global ordenats
+    global colors 
+    if not mp.ordenats:
+        colors = ['groc', 'taronja', 'vermell', 'blau']
+        random.shuffle(colors)
+        ordenats = True  
+    return colors
 
 #Dibujar el tablero
 def taulellDibuixar():
@@ -24,7 +35,7 @@ def taulellDibuixar():
  
     for carrer in dic.carrers:
         num_casa = dic.carrers[carrer]['Num. Cases']
-        num_hotels = dic.carrers[carrer]['Num. Hoteles']
+        num_hotels = dic.carrers[carrer]['Num. Hotels']
         print(num_hotels)
         posicio_carrer = dic.carrers[carrer]['posicio'] # posicion calle
         if num_hotels == 0 and num_casa > 0:
@@ -96,7 +107,7 @@ def opcions_jugador(color):
             elif dic.carrers[nom_carrer]["Propietari"] == color:
                 if dic.carrers[nom_carrer]["Num. Cases"] < 4:
                     opcions.append("comprar casa")
-                if dic.carrers[nom_carrer]["Num. Hoteles"] < 2:
+                if dic.carrers[nom_carrer]["Num. Hotels"] < 2:
                     opcions.append("comprar hotel")
                 opcions.append("preus")
             else:
