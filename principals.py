@@ -121,3 +121,82 @@ def opcions_jugador(color):
                         if tmp[jugador]['diners'] >= ug.totalVendre(color) * 0.9:
                             opcions.append(f"vendre a {tmp[jugador]['inicial']}")
         return opcions
+
+#Trucos
+def trucs(color):
+    opcions = ["anar a casella o carrer",
+               "afegir cases","afegir hotels",
+               "seguent jugador",
+               "diners jugador", "diners banca",
+               "sortir"
+               ]
+    print("Trucs")
+    print(", ".join(opcions))
+    opcio = input("Opcio: ")
+    while opcio not in opcions:
+        print("Opció incorrecte")
+        opcio = input("Opcio: ").lower()
+    if opcio == opcions[0]:
+        print("Digues el nom del carrer al que vols anar: ")
+        nom_carrer = input("Anar a carrer")
+        for carrer in dic.carrers:
+            if dic.carrers[carrer] == nom_carrer:
+                posicio = dic.carrers[carrer]['posicio']
+                break 
+        dic.jugadors['posicio'] = posicio
+    elif opcio == opcions[1] or opcio == opcions[2]:
+        posicio = dic.jugadors[color]['posicio']
+        for carrer in dic.carrers:
+            if dic.carrers[carrer]['posicio'] == posicio:
+                nom_carrer = carrer
+                break
+        if opcio == opcions[1]:
+            x = input("Num. Cases: ")
+            while not x.isdigit() or not (1 <= int(x) <= 4) or not ug.comprobarCasas(nom_carrer, x):
+                if not x.isdigit():
+                    print("Introdueix un número")
+                elif not (1 <= int(x) <= 4):
+                    print("Introdueix un valor entre 1 i 4")
+                else:
+                    print("El número de casas supera el límit")
+                x = input("Num. Cases: ")
+            x = int(x)
+            dic.carrers[nom_carrer]["Num. Cases"] += x
+        else:
+            x = input("Num. Hotels: ")
+            while not x.isdigit() or not (1 <= int(x) <= 4) or not ug.comprobarHoteles(nom_carrer, x):
+                if not x.isdigit():
+                    print("Introdueix un número")
+                elif not (1 <= int(x) <= 4):
+                    print("Introdueix un valor entre 1 i 4")
+                else:
+                    print("El número d'hotels supera el límit")
+                x = input("Num. Hotels: ")
+            x = int(x)
+            dic.carrers[nom_carrer]["Num. Hotels"] += x
+    elif opcio == opcions[3]:
+        seguent = input("Seguent jugador: ").lower()
+        while not seguent in mp.colors:
+            print("Jugador incorrecte")
+            seguent = input("Seguent jugador: ").lower()
+        global colors_tmp
+        colors_tmp = mp.colors
+        mp.colors[color + 1] = seguent
+    elif opcio == opcions[4]:
+        jugador = input("Jugador: ").lower()
+        while not jugador in mp.colors:
+            print("Jugador incorrecte")
+            jugador = input("Jugador: ").lower()
+        diners = input("Diners: ")
+        while  not diners.isdigit():
+            print("Introdueix un número")
+            diners = input("Diners: ")
+        dic.jugadors[jugador]['diners'] = diners
+    elif opcio == opcions[5]:
+        diners = input("Diners: ")
+        while  not diners.isdigit():
+            print("Introdueix un número")
+            diners = input("Diners: ")
+        dic.banca['diners'] = diners
+    elif opcio == opcions[6]:
+        return
