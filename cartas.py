@@ -4,9 +4,11 @@ import diccionarios as dic
 import tablero as tb
 
 #CASILLAS ESPECIALES
+#Casilla salida
 def sortida(color):
         dic.jugadors[color]['diners'] += 200
 
+#funciones casillas especiales
 def casillas_especiales(color):
     pos = dic.jugadors[color]['posicio']
     if pos == 0:
@@ -21,13 +23,18 @@ def casillas_especiales(color):
         caixa(color)
     if pos in [3,15]:
         sort(color)
+
+#ir a prisión
 def anar_preso(color):
     dic.jugadors[color]['posicio'] = 6
     preso(color)
+
+#salir prision
 def sortida_preso(color):
         dic.jugadors[color]['empressonat'] = False
         dic.jugadors[color]['torns_empressonat'] = 0
         dic.jugadors[color]['cartes'].remove("sortir_presó")
+
 #LOGICA PRESÓ
 def preso(color):
 
@@ -55,15 +62,20 @@ def preso(color):
         dic.jugadors[color]['empressonat'] = True
         tb.afegir_historial(f"{color} ha anat a la presó.")
 
-
 #CARTES
+
+#ir salida
 def anar_sortida(color):
     dic.jugadors[color]['posicio'] = 0
     sortida(color)
     tb.afegir_historial(f"El jugador {color} ha anat a Sortida, rep +200€")
+
+#tirar pa tra
 def tres_enrere(color):
     tb.afegir_historial(f"El jugador {color} ha anat tres caselles enrere")
-    dic.jugadors[color]['posicio'] -= 3       
+    dic.jugadors[color]['posicio'] -= 3
+
+#hacienda be like    
 def reparacions(color):
     precio = 25 * dic.jugadors[color]["total casas"]
     precio = precio + (100 * dic.jugadors[color]["total hoteles"])
@@ -71,12 +83,15 @@ def reparacions(color):
     dic.banca["diners"] += precio
     tb.afegir_historial(f"{color} ha fet reparacions a les seves construccions")
     return dic.banca, dic.jugadors[color]
+
+#eres hacienda
 def alcalde(color):
     for jugador in dic.jugadors:
         dic.jugadors[jugador]['diners'] -= 50
         dic.jugadors[color]['diners'] += 200
     tb.afegir_historial(f"{color} ha sigut escollit l'alcalde,rep 150€")
     return
+
 #SUERTE
 def sort(color):
     cartes_sort = [f"sortir_presó','{anar_preso(color)}','{anar_sortida(color)}','{tres_enrere(color)}','{reparacions()}','{alcalde(color)}"]
@@ -94,6 +109,7 @@ def caixa(color):
         dic.jugadors[color]["cartes"].append(carta)
         tb.afegir_historial(f"{color} té la carta de sortir de la presó")    
     return dic.jugadors[color]
+
 #FUNCIONS CAIXA:
 def error_banca(color):
     dic.jugadors[color]['diners'] += 150

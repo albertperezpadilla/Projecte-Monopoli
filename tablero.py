@@ -1,12 +1,15 @@
 #Aqui haremos las funciones del tablero
 import random 
 import diccionarios as dic
+import Monopoly as mp
 
+#Añadir al log
 def afegir_historial(accio):
     historial.append(accio)
     if len(historial) > 14:
         historial.pop(0)
 
+#Dibujar log
 def dibuixa_historial():
     global historial
     historial_bien = []
@@ -22,15 +25,18 @@ def dibuixa_historial():
             historial_bien.append(' ' * 41)
 
     return historial_bien
+
+#Ordre jugadors
 def ordre_jugadors():
     global ordenats
     global colors 
-    if not ordenats:
+    if not mp.ordenats:
         colors = ['groc', 'taronja', 'vermell', 'blau']
         random.shuffle(colors)
         ordenats = True  
     return colors
 
+#Mostrar la unformacio dels jugadors
 def mostrar_info(color):
     carrers = dic.jugadors[color]["carrers"]
     cartes = dic.jugadors[color]["cartes"]

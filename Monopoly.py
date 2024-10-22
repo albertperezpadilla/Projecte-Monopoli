@@ -11,3 +11,5 @@ import principals as pr
 
 historial = []
 ordenats = False
+
+pr.taulellDibuixar()

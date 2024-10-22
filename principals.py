@@ -5,6 +5,7 @@ import cartas as ct
 import uso_general as ug
 import random
 
+#Dibujar el tablero
 def taulellDibuixar():
     t = []
     casa = []
@@ -43,6 +44,7 @@ def taulellDibuixar():
             else:
                 casa[posicio_carrer] = " |"
                 hotel[posicio_carrer] = " |"
+
     # Ajuste de espacios para los jugadores
     for i in range(len(t)):
         t[i] = t[i].ljust(6)
@@ -107,4 +109,4 @@ def opcions_jugador(color):
                     for jugador in tmp:
                         if tmp[jugador]['diners'] >= ug.totalVendre(color) * 0.9:
                             opcions.append(f"vendre a {tmp[jugador]['inicial']}")
-    return opcions
+        return opcions
