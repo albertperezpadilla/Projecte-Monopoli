@@ -164,8 +164,8 @@ def comprobarHoteles(nom_carrer, x):
 def fer_opcions(color):
         while True:
             opcions = pr.opcions_jugador(color)
-            print(opcions)
-            opcio = input("selecciona una opció: ")
+            print(f"Juga \"{color}\", {opcions}")
+            opcio = input("Opció: ")
             if opcio == "trucs":
                 pr.trucs(color)
             elif opcio in opcions:
