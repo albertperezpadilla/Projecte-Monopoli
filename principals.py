@@ -159,17 +159,16 @@ def trucs(color):
         print("Opció incorrecte")
         opcio = input("Opcio: ").lower()
     
-# Asumiendo que `color` es la variable que almacena el color del jugador actual
-    if opcio == opcions[0]:  # Si la opción es 'anar a casella o carrer'
+    if opcio == opcions[0]:  
         print("Digues el nom del carrer al que vols anar:")
-        nom_carrer = input("Anar a carrer: ").strip()  # Limpia la entrada
+        nom_carrer = input("Anar a carrer: ").strip()  
 
-        if nom_carrer in dic.carrers:  # Comprueba si la calle existe
-            posicio = dic.carrers[nom_carrer]['posicio']  # Obtén la posición de la calle
-            dic.jugadors[color]['posicio'] = posicio  # Actualiza la posición del jugador
-            ug.actualiztar_tauler()  # Llama a la función para actualizar el tablero
+        if nom_carrer in dic.carrers:  
+            posicio = dic.carrers[nom_carrer]['posicio'] 
+            dic.jugadors[color]['posicio'] = posicio  
+            ug.actualiztar_tauler()  
         else:
-            print(f"El carrer '{nom_carrer}' no existeix.")  # Mensaje de error si no existe
+            print(f"El carrer '{nom_carrer}' no existeix.")  
 
 
     elif opcio == opcions[1] or opcio == opcions[2]:
