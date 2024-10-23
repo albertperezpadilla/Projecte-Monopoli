@@ -153,7 +153,7 @@ def trucs(color):
                "sortir"
                ]
     ug.actualiztar_tauler()
-    print("Has entrat al menu de Trucs:")
+    print("Trucs:")
     print(", ".join(opcions))
     opcio = input("Opcio: ")
     while opcio not in opcions:
