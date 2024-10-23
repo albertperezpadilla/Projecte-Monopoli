@@ -1,8 +1,9 @@
 #Diccionarios
 #Banca
 banca = {
-    'diners': 0,
-    'carrers' : ['Lauria', 'Rosselló', 'Marina',' Consell de cent','Muntaner', 'Aribau', 'Sant Joan', 'Aragó','Urquinaona', 'Fontana', 'Les Rambles',' Plaça Catalunya', 'Portal de lÀngel',' Via Augusta', 'Balmes', 'Passeig de Gràcia']
+    'diners': 500000,
+    'carrers' : ['Lauria', 'Roselló', 'Marina', 'C. de cent', 'Muntaner', 'Aribau', 'Sant Joan', 'Aragó', 'Urquinaona', 'Fontana', 'Les Rambles', 'Pl. Catalunya', 'P. Àngel', 'Via Augusta', 'Balmes', 'Pg. de Gràcia']
+
 }
 #Jugadores
 jugadors = {
@@ -62,7 +63,7 @@ carrers = {
         "Cmp. Hotel": 250,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 1
 
     },
@@ -74,7 +75,7 @@ carrers = {
         "Cmp. Hotel": 255,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 2
     },
     "Marina": {
@@ -85,7 +86,7 @@ carrers = {
         "Cmp. Hotel": 260,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 4
     },
     "C. de cent": {
@@ -96,7 +97,7 @@ carrers = {
         "Cmp. Hotel": 265,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 5
     },
     "Muntaner": {
@@ -107,7 +108,7 @@ carrers = {
         "Cmp. Hotel": 270,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 7
     },
     "Aribau": {
@@ -118,7 +119,7 @@ carrers = {
         "Cmp. Hotel": 275,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 8
     },
     "Sant Joan": {
@@ -129,7 +130,7 @@ carrers = {
         "Cmp. Hotel": 280,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 10
     },
     "Aragó": {
@@ -138,9 +139,9 @@ carrers = {
         "Cmp. Trrny": 50,
         "Cmp. Casa": 375,
         "Cmp. Hotel": 285,
-        "Propiedatari": "banca",
+        "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 11
     },
     "Urquinaona": {
@@ -151,7 +152,7 @@ carrers = {
         "Cmp. Hotel": 290,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 13
     },
     "Fontana": {
@@ -162,7 +163,7 @@ carrers = {
         "Cmp. Hotel": 300,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 14
     },
     "Les Rambles": {
@@ -173,7 +174,7 @@ carrers = {
         "Cmp. Hotel": 310,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 16
     },
     "Pl. Catalunya": {
@@ -184,7 +185,7 @@ carrers = {
         "Cmp. Hotel": 320,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 17
     },
     "P. Àngel": {
@@ -195,7 +196,7 @@ carrers = {
         "Cmp. Hotel": 330,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 19
     },
     "Via Augusta": {
@@ -206,7 +207,7 @@ carrers = {
         "Cmp. Hotel": 250,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 20
     },
     "Balmes": {
@@ -217,7 +218,7 @@ carrers = {
         "Cmp. Hotel": 350,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 22
     },
     "Pg. de Gràcia": {
@@ -228,7 +229,7 @@ carrers = {
         "Cmp. Hotel": 360,
         "Propietari": "banca",
         "Num. Cases": 0,
-        "Num. Hotels": 0,
+        "Num. Hoteles": 0,
         'posicio': 23
     }
 }

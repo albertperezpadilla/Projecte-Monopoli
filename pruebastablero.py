@@ -9,7 +9,7 @@ def clearScreen():
 
 #Variables del comienzo de la partida
 
-historial = ['AA','AA','AA','AA','AA','AA','AA','AA','AA','AA','AA','AA']
+historial = []
 ordenats = False
 
 def afegir_historial(accio):
