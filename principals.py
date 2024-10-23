@@ -152,17 +152,17 @@ def trucs(color):
                "diners jugador", "diners banca",
                "sortir"
                ]
-    print("Trucs")
+    ug.actualiztar_tauler()
+    print("Has entrat al menu de Trucs:")
     print(", ".join(opcions))
     opcio = input("Opcio: ")
     while opcio not in opcions:
         print("Opció incorrecte")
         opcio = input("Opcio: ").lower()
-    
     if opcio == opcions[0]:  
+        ug.actualiztar_tauler()
         print("Digues el nom del carrer al que vols anar:")
         nom_carrer = input("Anar a carrer: ").strip()  
-
         if nom_carrer in dic.carrers:  
             posicio = dic.carrers[nom_carrer]['posicio'] 
             dic.jugadors[color]['posicio'] = posicio  
@@ -170,8 +170,8 @@ def trucs(color):
         else:
             print(f"El carrer '{nom_carrer}' no existeix.")  
 
-
     elif opcio == opcions[1] or opcio == opcions[2]:
+        ug.actualiztar_tauler()
         posicio = dic.jugadors[color]['posicio']
         for carrer in dic.carrers:
             if dic.carrers[carrer]['posicio'] == posicio:
