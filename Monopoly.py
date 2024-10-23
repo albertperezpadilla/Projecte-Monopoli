@@ -12,12 +12,6 @@ def diners_banca():
         banca += 1000000
     ug.actualiztar_tauler() 
 
-def comprobar_bancarrota():
-    bancarrota = 0
-    for jugador in dic.jugadors:
-        if dic.jugadors[jugador]["diners"] <= 0:
-            bancarrota += 1
-    return bancarrota
 #Hay que cambiar el bucle para que funcione con las deudas y no cuando sea 0
 def jugar_partida():
     colors = tb.ordre_jugadors() 
@@ -26,10 +20,19 @@ def jugar_partida():
     if iniciar.lower() == "si": 
         while True:  
             diners_banca()
+            bancarrota = 0
             for color in colors:
-                if comprobar_bancarrota() == 3:
-                    print(f"El jugador {color} ha guanyat!")
-                    return  
+                posicio_perdre = dic.jugadors[color]['posicio']
+                if posicio_perdre not in [0, 3, 6, 9, 12, 15, 18, 21]:
+                    for carrer in dic.carrers:
+                        if not dic.carrers[carrer]['posicio'] == posicio_perdre:
+                            nom_carrer = carrer
+                            break
+                    if dic.carrers[nom_carrer]["Propietari"] != color and dic.carrers[nom_carrer]["Propietari"] != "banca":
+                        if ug.totalPagar(posicio_perdre) > dic.jugadors[color]['diners'] and dic.jugadors[color]['total casas'] == 0 and dic.jugadors[color]['total hoteles'] == 0:
+                            bancarrota += 1
+                            tb.afegir_historial()
+                            colors.remove(color)
                 
                 pr.clearScreen()  
                 pr.taulellDibuixar() 
