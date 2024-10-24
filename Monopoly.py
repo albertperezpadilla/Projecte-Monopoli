@@ -26,18 +26,6 @@ def jugar_partida():
                 colors.insert(pr.isiguiente, pr.siguiente)
                 pr.colors_modificats = False
             for color in colors:
-                posicio_perdre = dic.jugadors[color]['posicio']
-                if posicio_perdre not in [0, 3, 6, 9, 12, 15, 18, 21]:
-                    for carrer in dic.carrers:
-                        if not dic.carrers[carrer]['posicio'] == posicio_perdre:
-                            nom_carrer = carrer
-                            break
-                    if dic.carrers[nom_carrer]["Propietari"] != color and dic.carrers[nom_carrer]["Propietari"] != "banca":
-                        if ug.totalPagar(color) > dic.jugadors[color]['diners'] and dic.jugadors[color]['total casas'] == 0 and dic.jugadors[color]['total hoteles'] == 0:
-                            bancarrota += 1
-                            tb.afegir_historial(f"{color} está en bancarrota")
-                            colors.remove(color)
-                
                 pr.clearScreen()  
                 pr.taulellDibuixar() 
 
@@ -48,6 +36,17 @@ def jugar_partida():
                     if dic.jugadors[color]["posicio"] == 6:
                         ct.anar_preso(color)
                     else:
+                        posicio_perdre = dic.jugadors[color]['posicio']
+                        if posicio_perdre not in [0, 3, 6, 9, 12, 15, 18, 21]:
+                            for carrer in dic.carrers:
+                                if not dic.carrers[carrer]['posicio'] == posicio_perdre:
+                                    nom_carrer = carrer
+                                    break
+                            if dic.carrers[nom_carrer]["Propietari"] != color and dic.carrers[nom_carrer]["Propietari"] != "banca":
+                                if ug.totalPagar(color) > dic.jugadors[color]['diners'] and dic.jugadors[color]['total casas'] == 0 and dic.jugadors[color]['total hoteles'] == 0:
+                                    bancarrota += 1
+                                    tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" está en bancarrota")
+                                    colors.remove(color)
                         ct.casillas_especiales(color)
                         ug.totalPagar(color)
                         pr.taulellDibuixar()              
