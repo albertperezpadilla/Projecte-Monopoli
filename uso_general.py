@@ -189,10 +189,41 @@ def comprobarHoteles(nom_carrer, x):
         return True
     return False
 
+def vendre_banc(color):
+    propietats = dic.jugadors[color]['carrers']
+    diners_jugador = dic.jugadors[color]['diners']
+    propietats_banca = dic.banca['carrers']
+
+    for carrer in propietats:
+        propietats_banca.append(carrer)
+        propietats.remove(carrer)
+        quantitat = totalVendre(color) * 0.5
+        diners_jugador += quantitat
+        dic.carrers[carrer]['Num. Cases'] = 0
+        dic.carrers[carrer]['Num. Hoteles'] = 0
+        dic.carrers[carrer]['Propietari'] = "banca"
+    return diners_jugador
+
+def vendre_a_jugador(color,venedor):
+    propietats = dic.jugadors[color]['carrers']
+    diners_jugador = dic.jugadors[color]['diners']
+    propietats_venedor = dic.jugadors[venedor]['carrers']
+
+    for carrer in propietats:
+        propietats_venedor.append(carrer)
+        propietats.remove(carrer)
+        quantitat = totalVendre(color) * 0.9
+        diners_jugador += quantitat
+        dic.carrers[carrer]['Propietari'] = venedor
+        tb.afegir_historial(f"{dic.jugadors[color]['inicial']} ha venut tot a {dic.jugadors[venedor]['inicial']}")
+        actualiztar_tauler()
+    return diners_jugador
+
+
 def fer_opcions(color):
         while True:
             opcions = pr.opcions_jugador(color)
-            print(f"Juga \"{dic.jugadors[color]['inicial']}\", opcions: {(", ").join(opcions)}")
+            print(f"Juga \"{dic.jugadors[color]['inicial']}\", {opcions}")
             opcio = input("Opció: ")
             if opcio == "trucs":
                 pr.trucs(color)
@@ -211,5 +242,22 @@ def fer_opcions(color):
                     edificarHotel(color)
                 elif opcio == "preus":
                     mostrarPreu(color)
+                elif opcio == "preu jugador":
+                    tb.afegir_historial(f" \"{dic.jugadors[color]['inicial']}\" guanyará: {totalVendre(color) * 0.9}")
+                    actualiztar_tauler()
+                elif opcio == "preu banc":
+                    tb.afegir_historial(f"\"{dic.jugadors[color]['inicial']}\" guanyará: {totalVendre(color) * 0.5}")
+                    actualiztar_tauler()
+                elif opcio == "vendre al banc/jugador":
+                    venedor = input("A qui vols vendre? (banc/jugador)")
+                    if venedor == "banca":
+                        vendre_banc(color)
+                    elif venedor in ['Groc','Vermell','Taronja','Blau']:
+                        if venedor == color:
+                            tb.afegir_historial(f"No pots vendre a tu mateix.")
+                        else:
+                            vendre_a_jugador(color,venedor)
+
+                            return
             else:
                 print("Aquesta opció no esta disponible")
