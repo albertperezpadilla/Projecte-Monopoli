@@ -39,10 +39,10 @@ def comprarTerreny(color):
         pos_carrer = dic.carrers[carrer]["posicio"]
         preu_carrer = dic.carrers[carrer]["Cmp. Trrny"]
         propietari = dic.carrers[carrer]["Propietari"]
-        if pos_jugador == pos_carrer and diners_jugador >= preu_carrer and propietari == "banca":
+        if pos_jugador == pos_carrer and int(diners_jugador) >= int(preu_carrer) and propietari == "banca":
             tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" ha comprat {carrer}")
-            dic.jugadors[color]["diners"] -= preu_carrer
-            dic.banca["diners"] += preu_carrer
+            dic.jugadors[color]["diners"] -= int(preu_carrer)
+            dic.banca["diners"] += int(preu_carrer)
             dic.carrers[carrer]["Propietari"] = color
             dic.jugadors[color]["carrers"].append(carrer)
             dic.banca["carrers"].remove(carrer)
@@ -157,9 +157,10 @@ def totalPagar(color):
                     else:
                         # Actualizar el dinero del propietario
                         dic.jugadors[propietari]['diners'] += total_lloguer
-                        diners_actuals -= total_lloguer
+                        diners_actuals = int(diners_actuals)  
+                        diners_actuals -= int(total_lloguer)
                         tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" paga {total_lloguer} a \"{dic.jugadors[propietari]['inicial']}\"")
-
+    actualiztar_tauler()
     return total_lloguer
 
       
@@ -207,6 +208,7 @@ def vendre_banc(color):
         dic.carrers[carrer]['Num. Cases'] = 0
         dic.carrers[carrer]['Num. Hoteles'] = 0
         dic.carrers[carrer]['Propietari'] = "banca"
+        actualiztar_tauler()
     return diners_jugador
 
 def vendre_a_jugador(color,venedor):
@@ -214,7 +216,7 @@ def vendre_a_jugador(color,venedor):
     diners_jugador = dic.jugadors[color]['diners']
     propietats_venedor = dic.jugadors[venedor]['carrers']
 
-    for carrer in propietats:
+    for carrer in propietats[:]:
         propietats_venedor.append(carrer)
         propietats.remove(carrer)
         quantitat = totalVendre(color) * 0.9
@@ -254,16 +256,22 @@ def fer_opcions(color):
                 elif opcio == "preu banc":
                     tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" guanyará: {totalVendre(color) * 0.5}")
                     actualiztar_tauler()
-                elif opcio == "vendre al banc/jugador":
-                    venedor = input("  A qui vols vendre? (banc/jugador)")
-                    if venedor == "banca":
+                elif opcio == "vendre al banc":
                         vendre_banc(color)
-                    elif venedor in ['Groc','Vermell','Taronja','Blau']:
-                        if venedor == color:
-                            tb.afegir_historial(f"  No pots vendre a tu mateix.")
-                        else:
-                            vendre_a_jugador(color,venedor)
+                tmp = dic.jugadors.copy()
+                del tmp[color]
+                for jugador in tmp:
+                    if opcio == f"vendre a {jugador}":
+                        if jugador == 'G':
+                            vendre_a_jugador(color,"groc")
+                            actualiztar_tauler()
 
-                            return
+                        elif jugador == 'T':
+                            vendre_a_jugador(color,"taronja")
+                        elif jugador == 'V':
+                            vendre_a_jugador(color,"vermell")
+                        elif jugador == 'B':
+                            vendre_a_jugador(color,"blau")
+
             else:
-                print("Aquesta opció no esta disponible")
+                print("Aquesta opció no està disponible")
