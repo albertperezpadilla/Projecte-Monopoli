@@ -14,10 +14,13 @@ def mostarPreu(color):
 
     for carrer in dic.carrers:
         pos_carrer = dic.carrers[carrer]["posicio"]
+        preu_carrer = dic.carrers[carrer]["Cmp. Trrny"]
         preu_casa = dic.carrers[carrer]["Cmp. Casa"]
         preu_hotel = dic.carrers[carrer]["Cmp. Hotel"]
-        
-        if pos_jugador == pos_carrer:
+        propietari = dic.carrers[carrer]['Propietari']
+        if pos_jugador == pos_carrer and propietari =="banca":
+            tb.afegir_historial(f"Preu {carrer}:{preu_carrer}€")
+        elif pos_jugador == pos_carrer and propietari == color:
             tb.afegir_historial(f"Jugador: {color} - Preu Casa: {preu_casa}")
             tb.afegir_historial(f"Jugador: {color} - Preu Hotel: {preu_hotel}")
 

@@ -145,6 +145,7 @@ def opcions_jugador(color):
         if posicio not in [0, 3, 6, 9, 15, 18, 21]:
             if dic.carrers[nom_carrer]["Propietari"] == "banca":
                 opcions.append("comprar terreny")
+                opcions.append("preus")
             elif dic.carrers[nom_carrer]["Propietari"] == color:
                 if dic.carrers[nom_carrer]["Num. Cases"] < 4:
                     opcions.append("comprar casa")
