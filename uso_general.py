@@ -127,13 +127,36 @@ def edificarHotel(color):
     actualiztar_tauler()
 
 #Alquiler a pagar
-def totalPagar(posicio):
+def totalPagar(color):
+    pos = dic.jugadors[color]['posicio']
+    diners = dic.jugadors[color]['diners']
+    total_lloguer = 0  # Inicializar el total a pagar
+    
     for dades_carrer in dic.carrers.values():
-        if dades_carrer['posicio'] == posicio:
-            ll_casas = dades_carrer["Ll. Casa"] * dades_carrer["Num. Cases"]
-            ll_hotels = dades_carrer["Ll. Hotel"] * dades_carrer["Num. Hoteles"]
-            total_lloguer = ll_casas + ll_hotels
-            return total_lloguer
+        if dades_carrer['posicio'] == pos:
+            propietari = dades_carrer['Propietari']
+            if propietari != "banca" and propietari != color:
+                num_cases = dades_carrer["Num. Cases"]
+                num_hotels = dades_carrer["Num. Hoteles"]
+                
+                if num_cases == 0 and num_hotels == 0:
+                    tb.afegir_historial(f"No hi ha cases ni hotels.")
+                else:
+                    ll_casas = dades_carrer["Ll. Casa"] * num_cases
+                    ll_hotels = dades_carrer["Ll. Hotel"] * num_hotels
+                    total_lloguer = ll_casas + ll_hotels
+
+                    # Actualizar dinero solo si hay un alquiler a pagar
+                    if diners >= total_lloguer:
+                        diners -= total_lloguer
+                        dic.jugadors[propietari]['diners'] += total_lloguer
+                        tb.afegir_historial(f"{color} paga {total_lloguer} a {propietari}")
+                    else:
+                        tb.afegir_historial(f"{color} no té diners suficients per pagar {total_lloguer} a {propietari}.")
+    
+    dic.jugadors[color]['diners'] = diners 
+    return total_lloguer
+
         
 #Valor vender todas las propiedades a otro jugador/banca
 def totalVendre(color):

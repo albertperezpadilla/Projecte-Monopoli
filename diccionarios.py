@@ -14,7 +14,7 @@ jugadors = {
         'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
-        'posicio': 0,
+        'posicio': 23,
         'empressonat': False,
         'torns_empressonat': 0,
     },
@@ -25,7 +25,7 @@ jugadors = {
         'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
-        'posicio': 0,
+        'posicio': 22,
         'empressonat': False,
         'torns_empressonat': 0,
     },
@@ -36,7 +36,7 @@ jugadors = {
         'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
-        'posicio': 0,
+        'posicio': 22,
         'empressonat': False,
         'torns_empressonat': 0,
     },
@@ -47,7 +47,7 @@ jugadors = {
         'carrers': [],
         'total casas': 2,
         'total hoteles': 2,
-        'posicio': 0,
+        'posicio': 22,
         'empressonat': False,
         'torns_empressonat': 0,
     }
@@ -122,7 +122,7 @@ carrers = {
         "Num. Hoteles": 0,
         'posicio': 8
     },
-    "Sant Joan": {
+    "S. Joan": {
         "Ll. Casa": 25,
         "Ll. Hotel": 25,
         "Cmp. Trrny": 60,
@@ -221,7 +221,7 @@ carrers = {
         "Num. Hoteles": 0,
         'posicio': 22
     },
-    "Pg. de Gràcia": {
+    "Gracia": {
         "Ll. Casa": 50,
         "Ll. Hotel": 50,
         "Cmp. Trrny": 80,

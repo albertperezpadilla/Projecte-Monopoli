@@ -6,6 +6,7 @@ import tablero as tb
 #CASILLAS ESPECIALES
 def sortida(color):
         dic.jugadors[color]['diners'] += 200
+        tb.afegir_historial(f"{color} ha pasat per sortida +200")
 
 def anar_preso(color):
     dic.jugadors[color]['posicio'] = 6
@@ -128,16 +129,22 @@ def caixa(color):
     return dic.jugadors[color]
 
 def casillas_especiales(color):
-    pos = dic.jugadors[color]['posicio']
-    if pos == 0:
+    pos_actual = dic.jugadors[color]['posicio']
+    if pos_actual > 23 or pos_actual == 0:
         sortida(color)
-    if pos == 6:
+        dic.jugadors[color]['posicio'] = pos_actual % 24
+
+    # Otras casillas especiales
+    if pos_actual == 6:
         preso(color)
-    if pos == 18:
+    if pos_actual == 18:
         anar_preso(color)
-    if pos == 12:
+    if pos_actual == 12:
         tb.afegir_historial(f"{color} ha caigut al Parking")
-    if pos in [9,21]:
+    if pos_actual in [9, 21]:
         caixa(color)
-    if pos in [3,15]:
+    if pos_actual in [3, 15]:
         sort(color)
+
+    # Actualiza la posición anterior al final de la función
+    dic.jugadors[color]['posicio_anterior'] = pos_actual

@@ -28,8 +28,10 @@ def obtenirCarrers(color):
         return carrer
 
 def tirar_dados(color):
-    dau1 = random.randint(1,6)
-    dau2 = random.randint(1,6)
+#dau1 = random.randint(1,6)
+    #dau2 = random.randint(1,6)'''
+    dau1 = 2
+    dau2 = 0
     suma = dau1 + dau2
     dic.jugadors[color]['posicio'] += suma 
     tb.afegir_historial(f"{color} ha tret {suma}")
@@ -51,15 +53,27 @@ def taulellDibuixar():
     for color in colors:
         inicial = dic.jugadors[color]['inicial']
         posicio = dic.jugadors[color]['posicio']
+        print(f"Jugador: {color}, Posición: {posicio}")  
+        
+        # Si la posición es mayor a 23, reiniciamos la posición al rango 0-23
         if posicio > 23:
-            posicio -= 23
-            ct.sortida(color)
-        t[posicio] += inicial
+            dic.jugadors[color]['posicio'] = posicio % 24
+            posicio = dic.jugadors[color]['posicio']
+            print(f"Jugador {color} ha dado la vuelta, nueva posición: {posicio}")
+        
+        t[posicio] += inicial  # Añadimos el jugador en la casilla correspondiente
+        
+        for carrer in dic.carrers:
+            if posicio == dic.carrers[carrer]['posicio']:
+                print(carrer)
+        
+        # Verificamos si el jugador está en la casilla 0 (la salida)
+
+
 
     for carrer in dic.carrers:
         num_casa = dic.carrers[carrer]['Num. Cases']
         num_hotels = dic.carrers[carrer]['Num. Hoteles']
-        print(num_hotels)
         posicio_carrer = dic.carrers[carrer]['posicio'] # posicion calle
         if num_hotels == 0 and num_casa > 0:
             casa[posicio_carrer] = "--" + str(num_casa) + "C" 
@@ -118,12 +132,16 @@ def taulellDibuixar():
 def opcions_jugador(color):
     posicio = dic.jugadors[color]['posicio']
     opcions = ["passar"]
+    
+    if posicio in [0, 3, 6, 9, 12, 15, 18, 21]:
+        return opcions
+
     for carrer in dic.carrers:
         if dic.carrers[carrer]['posicio'] == posicio:
             nom_carrer = carrer
             break
     if posicio != 12:
-        if posicio not in [0, 3, 6, 9, 12, 15, 18, 21]:
+        if posicio not in [0, 3, 6, 9, 15, 18, 21]:
             if dic.carrers[nom_carrer]["Propietari"] == "banca":
                 opcions.append("comprar terreny")
             elif dic.carrers[nom_carrer]["Propietari"] == color:
@@ -133,7 +151,7 @@ def opcions_jugador(color):
                     opcions.append("comprar hotel")
                 opcions.append("preus")
             else:
-                if ug.totalPagar(posicio) > dic.jugadors[color]['diners']:
+                if ug.totalPagar(color) > dic.jugadors[color]['diners']:
                     opcions.append("preu jugador")
                     opcions.append("preu banc")
                     opcions.append("vendre al banc")
@@ -144,6 +162,7 @@ def opcions_jugador(color):
                             opcions.append(f"vendre a {tmp[jugador]['inicial']}")
         return opcions
     
+
 #Trucos
 def trucs(color):
     opcions = ["anar a casella o carrer",
@@ -211,7 +230,7 @@ def trucs(color):
                 tirar_dados(siguiente)
                 ct.casillas_especiales(siguiente)               
                 ug.actualiztar_tauler()
-                ug.opcions(siguiente)
+                ug.fer_opcions(siguiente)
         else:
             print(f"El color no existeix")
 

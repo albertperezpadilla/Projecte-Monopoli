@@ -29,7 +29,7 @@ def jugar_partida():
                             nom_carrer = carrer
                             break
                     if dic.carrers[nom_carrer]["Propietari"] != color and dic.carrers[nom_carrer]["Propietari"] != "banca":
-                        if ug.totalPagar(posicio_perdre) > dic.jugadors[color]['diners'] and dic.jugadors[color]['total casas'] == 0 and dic.jugadors[color]['total hoteles'] == 0:
+                        if ug.totalPagar(color) > dic.jugadors[color]['diners'] and dic.jugadors[color]['total casas'] == 0 and dic.jugadors[color]['total hoteles'] == 0:
                             bancarrota += 1
                             tb.afegir_historial()
                             colors.remove(color)
@@ -43,6 +43,7 @@ def jugar_partida():
                     pr.tirar_dados(color)
 
                 ct.casillas_especiales(color)
+                ug.totalPagar(color)
                 pr.taulellDibuixar()              
 
                 ug.fer_opcions(color)
