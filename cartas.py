@@ -60,21 +60,21 @@ def reparacions(color):
     precio = precio + (100 * dic.jugadors[color]["total hoteles"])
     dic.jugadors[color]["diners"] -= precio
     dic.banca["diners"] += precio
-    tb.afegir_historial(f" \"{dic.jugadors[color]['inicial']}\" repara construccions")
+    tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" repara construccions")
     return dic.banca, dic.jugadors[color]
 def alcalde(color):
     for jugador in dic.jugadors:
         dic.jugadors[jugador]['diners'] -= 50
         dic.jugadors[color]['diners'] += 200
-    tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" ha sigut escollit l'alcalde,rep 150€")
+    tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" es escollit l'alcalde, rep 150€")
     return
 #SUERTE
 def sort(color):
     cartes_sort = ["sortir_presó","anar_preso","anar_sortida","tres_enrere","reparacions","alcalde"]  
     carta = random.choice(cartes_sort)
     if carta == "sortir_presó":
-        dic.jugadors[color]["cartes"].append(carta)
-        tb.afegir_historial(f"{color} té la carta de sortir de la presó")
+        dic.jugadors[color]["cartes"].append("Sortir de la presó")
+        tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" té la carta de sortir de la presó")
     elif carta == "anar_preso":
         anar_preso(color)
     elif carta == "anar_sortida":
@@ -92,19 +92,19 @@ def sort(color):
 #FUNCIONS CAIXA:
 def error_banca(color):
     dic.jugadors[color]['diners'] += 150
-    tb.afegir_historial("Error de la banca, guanyes 150€")
+    tb.afegir_historial("  Error de la banca, guanyes 150€")
 def despesses_mediques(color):
     dic.jugadors[color]['diners'] -= 50
-    tb.afegir_historial("Despeses mediques, pagues 50€")
+    tb.afegir_historial("  Despeses mediques, pagues 50€")
 def despesses_escolars(color):
     dic.jugadors[color]['diners'] -= 50
-    tb.afegir_historial("Despeses escolars, pagues 50€")
+    tb.afegir_historial("  Despeses escolars, pagues 50€")
 def reparacions_carrers(color):
     dic.jugadors[color]['diners'] -= 40
-    tb.afegir_historial("Reparacions al carrer, pagues 40€")
+    tb.afegir_historial("  Reparacions al carrer, pagues 40€")
 def concurs(color):
     dic.jugadors[color]['diners'] += 10
-    tb.afegir_historial("Concurs de bellesa, guanyes 10€")
+    tb.afegir_historial("  Concurs de bellesa, guanyes 10€")
 
 #CAIXA
 def caixa(color):
@@ -113,7 +113,7 @@ def caixa(color):
     
     carta = random.choice(cartes_caixa)
     if carta == "sortir_presó":
-        dic.jugadors[color]["cartes"].append(carta)
+        dic.jugadors[color]["cartes"].append("Sortir de la presó")
         if '(Res)' in dic.jugadors[color]['cartes']:
             dic.jugadors[color]['cartes'].remove('(Res)')
         tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" té la carta de sortir de la presó")
