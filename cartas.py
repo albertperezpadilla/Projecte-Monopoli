@@ -28,6 +28,7 @@ def preso(color):
                 dic.jugadors[color]['torns_empressonat'] -= 1 
             dau1 = random.randint(1, 6)
             dau2 = random.randint(1, 6)
+            tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" és a la pressó, {dic.jugadors[color]['torns_empressonat']} torns sense tirar")
             
             #logica de salida
             if dau1 == dau2:
@@ -39,7 +40,6 @@ def preso(color):
                 dic.jugadors[color]['cartes'].remove("sortir_presó")
                 sortida_preso(color)
                 return
-            tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" és a la pressó, {dic.jugadors[color]['torns_empressonat']} torns sense tirar")
             return False
     else:
         dic.jugadors[color]['torns_empressonat'] = 3
@@ -73,6 +73,8 @@ def sort(color):
     cartes_sort = ["sortir_presó","anar_preso","anar_sortida","tres_enrere","reparacions","alcalde"]  
     carta = random.choice(cartes_sort)
     if carta == "sortir_presó":
+        if '(Res)' in dic.jugadors[color]['cartes']:
+            dic.jugadors[color]['cartes'].remove('(Res)')
         dic.jugadors[color]["cartes"].append("Sortir de la presó")
         tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" té la carta de sortir de la presó")
     elif carta == "anar_preso":

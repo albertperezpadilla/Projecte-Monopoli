@@ -41,12 +41,13 @@ def jugar_partida():
                     ct.anar_preso(color)
                 else:
                     pr.tirar_dados(color)
-
-                ct.casillas_especiales(color)
-                ug.totalPagar(color)
-                pr.taulellDibuixar()              
-
-                ug.fer_opcions(color)
+                    if dic.jugadors[color]["posicio"] == 6:
+                        ct.anar_preso(color)
+                    else:
+                        ct.casillas_especiales(color)
+                        ug.totalPagar(color)
+                        pr.taulellDibuixar()              
+                        ug.fer_opcions(color)
                 
       
 jugar_partida()
