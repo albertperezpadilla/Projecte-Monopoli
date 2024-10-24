@@ -1,5 +1,5 @@
 # Aquí haremos el monopoly
-import random
+import copy
 import diccionarios as dic
 import tablero as tb
 import cartas as ct
@@ -14,13 +14,17 @@ def diners_banca():
 
 #Hay que cambiar el bucle para que funcione con las deudas y no cuando sea 0
 def jugar_partida():
-    colors = tb.ordre_jugadors() 
+    colors = tb.ordre_jugadors()
     pr.taulellDibuixar()  
-    iniciar = input("Començar? Si/No: ") 
+    iniciar = input("Començar? Si/No: ")
     if iniciar.lower() == "si": 
         while True:  
             diners_banca()
             bancarrota = 0
+            if pr.colors_modificats:
+                del colors[pr.icolor + 1]
+                colors.insert(pr.isiguiente, pr.siguiente)
+                pr.colors_modificats = False
             for color in colors:
                 posicio_perdre = dic.jugadors[color]['posicio']
                 if posicio_perdre not in [0, 3, 6, 9, 12, 15, 18, 21]:
