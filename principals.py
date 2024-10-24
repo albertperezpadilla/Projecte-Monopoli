@@ -166,9 +166,10 @@ def opcions_jugador(color):
                     tmp = dic.jugadors.copy()
                     del tmp[color]
                     for jugador in tmp:
-                        if tmp[jugador]['diners'] >= ug.totalVendre(color) * 0.9:
+                        if int(tmp[jugador]['diners']) >= int(ug.totalVendre(color)) * 0.9:
                             opcions.append(f"vendre a {tmp[jugador]['inicial']}")
         return opcions
+    
     
 
 #Trucos
