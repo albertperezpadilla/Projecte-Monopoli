@@ -133,48 +133,54 @@ def edificarHotel(color):
 
 #Alquiler a pagar
 def totalPagar(color):
-    pos = dic.jugadors[color]['posicio']
-    diners = dic.jugadors[color]['diners']
+    posicion_actual = dic.jugadors[color]['posicio']
+    diners_actuals = dic.jugadors[color]['diners']
     total_lloguer = 0  # Inicializar el total a pagar
     
     for dades_carrer in dic.carrers.values():
-        if dades_carrer['posicio'] == pos:
+        if dades_carrer['posicio'] == posicion_actual:
             propietari = dades_carrer['Propietari']
             if propietari != "banca" and propietari != color:
                 num_cases = dades_carrer["Num. Cases"]
                 num_hotels = dades_carrer["Num. Hoteles"]
                 
                 if num_cases == 0 and num_hotels == 0:
-                    tb.afegir_historial(f"  No hi ha cases ni hotels.")
+                    tb.afegir_historial("  No hi ha cases ni hotels.")
                 else:
                     ll_casas = dades_carrer["Ll. Casa"] * num_cases
                     ll_hotels = dades_carrer["Ll. Hotel"] * num_hotels
                     total_lloguer = ll_casas + ll_hotels
-
-                    # Actualizar dinero solo si hay un alquiler a pagar
-                    if diners >= total_lloguer:
-                        diners -= total_lloguer
-                        dic.jugadors[propietari]['diners'] += total_lloguer
-                        tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" paga {total_lloguer} a \"{dic.jugadors[propietari]['inicial']}\"")
-                    else:
+                    
+                    # Comprobar si el jugador tiene suficiente dinero
+                    if int(total_lloguer) > int(diners_actuals):
                         tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" no té diners suficients per pagar {total_lloguer} a \"{dic.jugadors[propietari]['inicial']}\".")
-    
-    dic.jugadors[color]['diners'] = diners 
+                    else:
+                        # Actualizar el dinero del propietario
+                        dic.jugadors[propietari]['diners'] += total_lloguer
+                        diners_actuals -= total_lloguer
+                        tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" paga {total_lloguer} a \"{dic.jugadors[propietari]['inicial']}\"")
+
     return total_lloguer
 
-        
+
+      
 #Valor vender todas las propiedades a otro jugador/banca
 def totalVendre(color):
-    preu_total = 0
+    preu_total = 0  # Inicializa el precio total a 0
     carrers_color = dic.jugadors[color]['carrers']
+
     for carrer in carrers_color:
-        preu_terreny = dic.carrers[carrer]['Cmp. Trrny']
+
+        preu_terreny = dic.carrers[carrer]['Cmp. Trrny'] 
         num_cases = dic.carrers[carrer]['Num. Cases']
-        num_hotels = dic.carrers[carrer]['Num. Hoteles']
-        preu_cases = num_cases * dic.carrers[carrer]['Cmp. Casa']
-        preu_hotels = num_hotels * dic.carrers[carrer]['Cmp. Hotel']
+        num_hotels = dic.carrers[carrer]['Num. Hoteles']  
+        preu_cases = num_cases * dic.carrers[carrer]['Cmp. Casa'] 
+        preu_hotels = num_hotels * dic.carrers[carrer]['Cmp. Hotel']  
+        
         preu_total += preu_terreny + preu_cases + preu_hotels
-    return preu_total
+
+    return preu_total  # Retorna el precio total
+
 
 #Comprobar numero de casas i hoteles
 def comprobarCasas(nom_carrer, x):
@@ -223,7 +229,8 @@ def vendre_a_jugador(color,venedor):
 def fer_opcions(color):
         while True:
             opcions = pr.opcions_jugador(color)
-            print(f"Juga \"{dic.jugadors[color]['inicial']}\", opcions: {(", ").join(opcions)}")
+            print(f"Juga \"{dic.jugadors[color]['inicial']}\", opcions: {', '.join(opcions)}")
+
             opcio = input("Opció: ")
             if opcio == "trucs":
                 pr.trucs(color)

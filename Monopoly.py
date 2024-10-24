@@ -31,7 +31,7 @@ def jugar_partida():
                     if dic.carrers[nom_carrer]["Propietari"] != color and dic.carrers[nom_carrer]["Propietari"] != "banca":
                         if ug.totalPagar(color) > dic.jugadors[color]['diners'] and dic.jugadors[color]['total casas'] == 0 and dic.jugadors[color]['total hoteles'] == 0:
                             bancarrota += 1
-                            tb.afegir_historial()
+                            tb.afegir_historial(f"{color} está en bancarrota")
                             colors.remove(color)
                 
                 pr.clearScreen()  

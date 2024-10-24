@@ -2,7 +2,7 @@
 #Banca
 banca = {
     'diners': 10000000,
-    'carrers' : ['Lauria', 'Roselló', 'Marina', 'C. de cent', 'Muntaner', 'Aribau', 'Sant Joan', 'Aragó', 'Urquinaona', 'Fontana', 'Les Rambles', 'Pl. Catalunya', 'P. Àngel', 'Via Augusta', 'Balmes', 'Pg. de Gràcia']
+    'carrers' : ['Lauria','Roselló', 'Marina', 'C. de cent', 'Muntaner', 'Aribau', 'Sant Joan', 'Aragó', 'Urquinaona', 'Fontana', 'Les Rambles', 'Pl. Catalunya', 'P. Àngel', 'Via Augusta', 'Balmes', 'Pg. de Gràcia']
 
 }
 #Jugadores
@@ -14,40 +14,40 @@ jugadors = {
         'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
-        'posicio': 23,
+        'posicio': 1,
         'empressonat': False,
         'torns_empressonat': 0,
     },
     "taronja":  {
         'inicial': 'T',
-        'diners': 2000,
+        'diners': 0,
         'cartes' : [],
         'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
-        'posicio': 22,
+        'posicio': 2,
         'empressonat': False,
         'torns_empressonat': 0,
     },
     "vermell":  {
         'inicial': 'V',
-        'diners': 2000,
+        'diners': 0,
         'cartes' : [],
         'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
-        'posicio': 22,
+        'posicio': 3,
         'empressonat': False,
         'torns_empressonat': 0,
     },
     "blau": {
         'inicial': 'B',
-        'diners': 2000,
+        'diners': 0,
         'cartes' : [],
         'carrers': [],
         'total casas': 2,
         'total hoteles': 2,
-        'posicio': 22,
+        'posicio': 4,
         'empressonat': False,
         'torns_empressonat': 0,
     }

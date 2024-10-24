@@ -21,15 +21,17 @@ def obtenirCartes(color):
     else:
         return cartes
 def obtenirCarrers(color):
-    carrer = dic.jugadors[color]['carrers'] 
+    carrer = dic.jugadors[color]['carrers']
     if len(carrer) == 0:
-        carrer.append("(Res)")
-        return carrer
-    else:
-        return carrer
+        return ["(Res)"]
+    if "(Res)" in carrer:
+        carrer.remove("(Res)")
+    
+    return carrer
+
 
 def tirar_dados(color):
-#dau1 = random.randint(1,6)
+    #dau1 = random.randint(1,6)
     #dau2 = random.randint(1,6)'''
     dau1 = 2
     dau2 = 0
@@ -153,7 +155,7 @@ def opcions_jugador(color):
                     opcions.append("comprar hotel")
                 opcions.append("preus")
             else:
-                if ug.totalPagar(color) > dic.jugadors[color]['diners']:
+                if int(ug.totalPagar(color)) > int(dic.jugadors[color]['diners']):
                     opcions.append("preu jugador")
                     opcions.append("preu banc")
                     opcions.append("vendre al banc")
