@@ -3,9 +3,13 @@ import tablero as tb
 import diccionarios as dic
 import cartas as ct
 import uso_general as ug
-import os,random
+import os,copy
 
+colors_modificats = False
 ordenats = False
+icolor = 0
+isiguiente = 0
+siguiente = ""
 
 def clearScreen():
     if os.name == "nt":
@@ -185,56 +189,89 @@ def trucs(color):
     if opcio == opcions[0]:  
         ug.actualiztar_tauler()
         print("Digues el nom del carrer al que vols anar:")
-        nom_carrer = input("Anar a carrer: ").strip()  
+        nom_carrer = input("Anar a carrer: ")  
         if nom_carrer in dic.carrers:  
             posicio = dic.carrers[nom_carrer]['posicio'] 
             dic.jugadors[color]['posicio'] = posicio  
-            ug.actualiztar_tauler()  
+            ug.actualiztar_tauler()
+        elif nom_carrer.lower() == "presó":
+            dic.jugadors[color]['posicio'] = 6
+            ct.anar_preso(color)
+        elif nom_carrer.lower() == "parking":
+            dic.jugadors[color]['posicio'] = 12
+        elif nom_carrer.lower() == "sort":
+            suerte = input("Selecciona una de las dos casellas: ")
+            while int(suerte) not in [1,2]:
+                print("Opció incorrecte, escriu un numero de l'1 al 2")
+                suerte = input("Selecciona una de las dos casellas: ")
+            if int(suerte) == 1:
+                dic.jugadors[color]['posicio'] = 3
+                ct.sort(color)
+            elif int(suerte) == 2:
+                dic.jugadors[color]['posicio'] = 15
+                ct.sort(color)
+        elif nom_carrer.lower() == "caixa":
+            caja = input("Selecciona una de las dos casellas: ")
+            while int(caja) not in [1,2]:
+                print("Opció incorrecte, escriu un numero de l'1 al 2")
+                suerte = input("Selecciona una de las dos casellas: ")
+            if int(caja) == 1:
+                dic.jugadors[color]['posicio'] = 9
+                ct.caixa(color)
+            elif int(caja) == 2:
+                dic.jugadors[color]['posicio'] = 21
+                ct.caixa(color)
         else:
             print(f"El carrer '{nom_carrer}' no existeix.")  
+        ug.actualiztar_tauler()
 
     elif opcio == opcions[1] or opcio == opcions[2]:
         ug.actualiztar_tauler()
         posicio = dic.jugadors[color]['posicio']
-        for carrer in dic.carrers:
-            if dic.carrers[carrer]['posicio'] == posicio:
-                nom_carrer = carrer
-                break
-        if opcio == opcions[1]:
-            x = input("Num. Cases: ")
-            while not x.isdigit() or not (1 <= int(x) <= 4) or not ug.comprobarCasas(nom_carrer, x):
-                if not x.isdigit():
-                    print("Introdueix un número")
-                elif not (1 <= int(x) <= 4):
-                    print("Introdueix un valor entre 1 i 4")
-                else:
-                    print("El número de cases supera el límit")
+        if posicio not in [0, 3, 6, 9, 12, 15, 18, 21]:
+            for carrer in dic.carrers:
+                if dic.carrers[carrer]['posicio'] == posicio:
+                    nom_carrer = carrer
+                    break
+            if opcio == opcions[1]:
                 x = input("Num. Cases: ")
-            x = int(x)
-            dic.carrers[nom_carrer]["Num. Cases"] += x
-            ug.actualiztar_tauler()  
+                while not x.isdigit() or not (1 <= int(x) <= 4) or not ug.comprobarCasas(nom_carrer, x):
+                    if not x.isdigit():
+                        print("Introdueix un número")
+                    elif not (1 <= int(x) <= 4):
+                        print("Introdueix un valor entre 1 i 4")
+                    else:
+                        print("El número de cases supera el límit")
+                    x = input("Num. Cases: ")
+                x = int(x)
+                dic.carrers[nom_carrer]["Num. Cases"] += x
+                ug.actualiztar_tauler()  
 
-        else:
-            x = input("Num. Hoteles: ")
-            while not x.isdigit() or not (1 <= int(x) <= 2) or not ug.comprobarHoteles(nom_carrer, x):
-                if not x.isdigit():
-                    print("Introdueix un número")
-                elif not (1 <= int(x) <= 2):
-                    print("Introdueix un valor entre 1 i 2")
-                else:
-                    print("El número d'hotels supera el límit")
+            else:
                 x = input("Num. Hoteles: ")
-            x = int(x)
-            dic.carrers[nom_carrer]["Num. Hoteles"] += x
-            ug.actualiztar_tauler()  
+                while not x.isdigit() or not (1 <= int(x) <= 2) or not ug.comprobarHoteles(nom_carrer, x):
+                    if not x.isdigit():
+                        print("Introdueix un número")
+                    elif not (1 <= int(x) <= 2):
+                        print("Introdueix un valor entre 1 i 2")
+                    else:
+                        print("El número d'hotels supera el límit")
+                    x = input("Num. Hoteles: ")
+                x = int(x)
+                dic.carrers[nom_carrer]["Num. Hoteles"] += x
+                ug.actualiztar_tauler() 
+        else:
+            print("No pots contriur en una casella especial")
 
     elif opcio == opcions[3]:
-        siguiente = input("color").lower()
-        if siguiente in colors:       
-                tirar_dados(siguiente)
-                ct.casillas_especiales(siguiente)               
-                ug.actualiztar_tauler()
-                ug.fer_opcions(siguiente)
+        global icolor, isiguiente, colors_modificats, siguiente
+        siguiente = input("Color: ").lower()
+        if siguiente in colors:
+                isiguiente = colors.index(siguiente)
+                del colors[isiguiente]
+                icolor = colors.index(color)
+                colors.insert(icolor + 1, siguiente)
+                colors_modificats = True
         else:
             print(f"El color no existeix")
 
@@ -259,4 +296,5 @@ def trucs(color):
         ug.actualiztar_tauler()  
 
     elif opcio == opcions[6]:
+        ug.actualiztar_tauler()  
         return
