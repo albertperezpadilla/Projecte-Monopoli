@@ -153,7 +153,7 @@ def totalPagar(color):
                     
                     # Comprobar si el jugador tiene suficiente dinero
                     if int(total_lloguer) > int(diners_actuals):
-                        tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" no té diners suficients per pagar {total_lloguer} a \"{dic.jugadors[propietari]['inicial']}\".")
+                        tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" no pot pagar a \"{dic.jugadors[propietari]['inicial']}\".")
                     else:
                         # Actualizar el dinero del propietario
                         dic.jugadors[propietari]['diners'] += total_lloguer
@@ -161,7 +161,6 @@ def totalPagar(color):
                         tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" paga {total_lloguer} a \"{dic.jugadors[propietari]['inicial']}\"")
 
     return total_lloguer
-
 
       
 #Valor vender todas las propiedades a otro jugador/banca
