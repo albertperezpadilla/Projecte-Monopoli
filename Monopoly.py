@@ -17,10 +17,10 @@ def jugar_partida():
     colors = tb.ordre_jugadors()
     pr.taulellDibuixar()  
     iniciar = input("Començar? Si/No: ")
+    bancarrota = 0
     if iniciar.lower() == "si": 
         while True:  
             diners_banca()
-            bancarrota = 0
             if pr.colors_modificats:
                 del colors[pr.icolor + 1]
                 colors.insert(pr.isiguiente, pr.siguiente)
