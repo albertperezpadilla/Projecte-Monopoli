@@ -16,14 +16,14 @@ def clearScreen():
 def obtenirCartes(color):
     cartes = dic.jugadors[color]['cartes'] 
     if len(cartes) == 0:
-        cartes = "(Res)"
+        cartes.append("(Res)")
         return cartes
     else:
         return cartes
 def obtenirCarrers(color):
     carrer = dic.jugadors[color]['carrers'] 
     if len(carrer) == 0:
-        carrer = "(Res)"
+        carrer.append("(Res)")
         return carrer
     else:
         return carrer
@@ -106,24 +106,24 @@ def taulellDibuixar():
                 |Parking |Urquinao|Fontana |Sort    |Rambles |Pl.Cat  |Anr pró | Diners: {dic.banca['diners']}
                 |{t[12]}  |{t[13]}  |{t[14]}  |{t[15]}  |{t[16]}  |{t[17]}  |{t[18]}  |
                 +--------+--------+--------+--------+--------+--------+--------+ Jugador {colors[0].capitalize()}: 
-                |Aragó  {casa[11]}{log[0]}   | Angel {casa[19]} Carrers:{obtenirCarrers(colors[0])}
+                |Aragó  {casa[11]}{log[0]}   | Angel {casa[19]} Carrers: {(", ").join(obtenirCarrers(colors[0]))}
                 |{t[11]} {hotel[11]}{log[1]}   |{t[19]} {hotel[19]} Diners: {dic.jugadors[colors[0]]['diners']}  
-                +--------+{log[2]}   +--------+ Especial:{obtenirCartes(colors[0])}          
+                +--------+{log[2]}   +--------+ Especial: {(", ").join(obtenirCartes(colors[0]))}          
                 |S.Joan {casa[10]}{log[3]}   |Augusta{casa[20]} 
                 |{t[10]} {hotel[10]}{log[4]}   |{t[20]} {hotel[20]} Jugador {colors[1].capitalize()}:
-                +--------+{log[5]}   +--------+ Carrers:{obtenirCarrers(colors[1])}
+                +--------+{log[5]}   +--------+ Carrers: {(", ").join(obtenirCarrers(colors[1]))}
                 |Caixa   |{log[6]}   |Caixa   | Diners: {dic.jugadors[colors[1]]['diners']}
-                |{t[9]}  |{log[7]}   |{t[21]}  | Especial:{obtenirCartes(colors[1])} 
+                |{t[9]}  |{log[7]}   |{t[21]}  | Especial: {(", ").join(obtenirCartes(colors[1]))} 
                 +--------+{log[8]}   +--------+ 
                 |Aribau {casa[8]}{log[9]}   |Balmes {casa[22]} Jugador {colors[2].capitalize()}: 
-                |{t[8]} {hotel[8]}{log[10]}   |{t[22]} {hotel[22]} Carrers:{obtenirCarrers(colors[2])}
+                |{t[8]} {hotel[8]}{log[10]}   |{t[22]} {hotel[22]} Carrers: {(", ").join(obtenirCarrers(colors[2]))}
                 +--------+{log[11]}   +--------+ Diners: {dic.jugadors[colors[2]]['diners']}
-                |Muntan {casa[7]}{log[12]}   |Gracia {casa[23]} Especial:{obtenirCartes(colors[2])}
+                |Muntan {casa[7]}{log[12]}   |Gracia {casa[23]} Especial: {(", ").join(obtenirCartes(colors[2]))}
                 |{t[7]} {hotel[7]}{log[13]}   |{t[23]} {hotel[23]} 
                 +--------+----{casa[5]}+----{casa[4]}+--------+----{casa[2]}+----{casa[1]}+--------+ Jugador {colors[3].capitalize()}:
-                |{t[6]}  |{t[5]}  |{t[4]}  |{t[3]}  |{t[2]}  |{t[1]}  |{t[0]}  | Diners: {dic.jugadors[colors[3]]['diners']}
-                |Presó   |Consell |Marina  |Sort    |Rosell  |Lauria  |Sortida | Carrers:{obtenirCarrers(colors[3])}
-                +--------+--------+--------+--------+--------+--------+--------+ Especial:{obtenirCartes(colors[3])}
+                |{t[6]}  |{t[5]}  |{t[4]}  |{t[3]}  |{t[2]}  |{t[1]}  |{t[0]}  | Carrers: {(", ").join(obtenirCarrers(colors[3]))}
+                |Presó   |Consell |Marina  |Sort    |Rosell  |Lauria  |Sortida | Diners: {dic.jugadors[colors[3]]['diners']}
+                +--------+--------+--------+--------+--------+--------+--------+ Especial: {(", ").join(obtenirCartes(colors[3]))}
     """)
 
 
@@ -175,7 +175,7 @@ def trucs(color):
                ]
     ug.actualiztar_tauler()
     print("Trucs:")
-    print(", ".join(opcions))
+    print("opcions: ",", ".join(opcions))
     opcio = input("Opcio: ")
     while opcio not in opcions:
         print("Opció incorrecte")

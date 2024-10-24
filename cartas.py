@@ -60,7 +60,7 @@ def reparacions(color):
     precio = precio + (100 * dic.jugadors[color]["total hoteles"])
     dic.jugadors[color]["diners"] -= precio
     dic.banca["diners"] += precio
-    tb.afegir_historial(f"{color} repara construccions")
+    tb.afegir_historial(f" \"{dic.jugadors[color]['inicial']}\" repara construccions")
     return dic.banca, dic.jugadors[color]
 def alcalde(color):
     for jugador in dic.jugadors:
@@ -114,6 +114,8 @@ def caixa(color):
     carta = random.choice(cartes_caixa)
     if carta == "sortir_presó":
         dic.jugadors[color]["cartes"].append(carta)
+        if '(Res)' in dic.jugadors[color]['cartes']:
+            dic.jugadors[color]['cartes'].remove('(Res)')
         tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" té la carta de sortir de la presó")
     elif carta == "error_banca":
         error_banca(color)

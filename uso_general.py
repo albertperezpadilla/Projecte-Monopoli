@@ -46,6 +46,8 @@ def comprarTerreny(color):
             dic.carrers[carrer]["Propietari"] = color
             dic.jugadors[color]["carrers"].append(carrer)
             dic.banca["carrers"].remove(carrer)
+            if '(Res)' in dic.jugadors[color]['carrers']:
+                dic.jugadors[color]['carrers'].remove('(Res)')
             break
             
         elif pos_jugador == pos_carrer and propietari != "banca":
@@ -190,7 +192,7 @@ def comprobarHoteles(nom_carrer, x):
 def fer_opcions(color):
         while True:
             opcions = pr.opcions_jugador(color)
-            print(f"Juga \"{dic.jugadors[color]['inicial']}\", {opcions}")
+            print(f"Juga \"{dic.jugadors[color]['inicial']}\", opcions: {(", ").join(opcions)}")
             opcio = input("Opció: ")
             if opcio == "trucs":
                 pr.trucs(color)
