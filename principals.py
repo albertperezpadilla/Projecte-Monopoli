@@ -101,28 +101,28 @@ def taulellDibuixar():
         t[i] = t[i].ljust(6)
     log = tb.dibuixa_historial() 
     print(f"""
-                +--------+----{casa[13]}+----{casa[14]}+--------+----{casa[16]}+---{casa[17]}+---------+   "Banca":
-                |Parking |Urquinao|Fontana |Sort    |Rambles |Pl.Cat  |Anr pró |    Diners: {dic.banca['diners']}
+                +--------+----{casa[13]}+----{casa[14]}+--------+----{casa[16]}+---{casa[17]}+---------+ Banca:
+                |Parking |Urquinao|Fontana |Sort    |Rambles |Pl.Cat  |Anr pró | Diners: {dic.banca['diners']}
                 |{t[12]}  |{t[13]}  |{t[14]}  |{t[15]}  |{t[16]}  |{t[17]}  |{t[18]}  |
-                +--------+--------+--------+--------+--------+--------+--------+>jugador blau: 
-                |Aragó  {casa[11]}> {log[0]} | Angel {casa[19]}Carrers:{obtenirCarrers("blau")}
-                |{t[11]} {hotel[11]}{log[1]}   |{t[19]} {hotel[19]}Diners:{dic.jugadors["blau"]['diners']}  
-                +--------+{log[2]}   +--------+Cartes:{obtenirCartes("blau")}          
-                |S.Joan {casa[10]}{log[3]}   |Augusta{casa[20]}>jugador Vermell:
-                |{t[10]} {hotel[10]}> {log[4]} |{t[20]} {hotel[20]}Carrers:{obtenirCarrers("vermell")}
-                +--------+{log[5]}   +--------+Diners:{dic.jugadors["vermell"]['diners']} 
-                |Caixa   |{log[6]}   |Caixa   |Especials:{obtenirCartes("vermell")} 
-                |{t[9]}  |{log[7]}   |{t[21]}  |>jugador Groc:
-                +--------+> {log[8]} +--------+Carrers:{obtenirCarrers("groc")}
-                |Aribau {casa[8]}{log[9]}   |Balmes {casa[22]}Diners:{dic.jugadors["groc"]['diners']} 
-                |{t[8]} {hotel[8]}{log[10]}   |{t[22]} {hotel[22]}Cartes:{obtenirCartes("groc")} 
-                +--------+> {log[11]} +--------+>jugador Taronja:
-                |Muntan {casa[7]}{log[12]}   |Gracia {casa[23]}Carrers:{obtenirCarrers("taronja")}
-                |{t[7]} {hotel[7]}{log[13]}   |{t[23]} {hotel[23]}Diners:{dic.jugadors["taronja"]['diners']} 
-                +--------+----{casa[5]}+----{casa[4]}+--------+----{casa[2]}+----{casa[1]}+--------+Especials:{obtenirCartes("taronja")}
-                |{t[6]}  |{t[5]}  |{t[4]}  |{t[3]}  |{t[2]}  |{t[1]}  |{t[0]}  |
-                |Presó   |Consell |Marina  |Sort    |Rosell  |Lauria  |Sortida |
-                +--------+--------+--------+--------+--------+--------+--------+
+                +--------+--------+--------+--------+--------+--------+--------+ Jugador Blau: 
+                |Aragó  {casa[11]}> {log[0]} | Angel {casa[19]} Carrers:{obtenirCarrers("blau")}
+                |{t[11]} {hotel[11]}{log[1]}   |{t[19]} {hotel[19]} Diners: {dic.jugadors["blau"]['diners']}  
+                +--------+{log[2]}   +--------+ Especial:{obtenirCartes("blau")}          
+                |S.Joan {casa[10]}{log[3]}   |Augusta{casa[20]} 
+                |{t[10]} {hotel[10]}> {log[4]} |{t[20]} {hotel[20]} Jugador Vermell:
+                +--------+{log[5]}   +--------+ Carrers:{obtenirCarrers("vermell")}
+                |Caixa   |{log[6]}   |Caixa   | Diners: {dic.jugadors["vermell"]['diners']}
+                |{t[9]}  |{log[7]}   |{t[21]}  | Especial:{obtenirCartes("vermell")} 
+                +--------+> {log[8]} +--------+ 
+                |Aribau {casa[8]}{log[9]}   |Balmes {casa[22]} Jugador Groc: 
+                |{t[8]} {hotel[8]}{log[10]}   |{t[22]} {hotel[22]} Carrers:{obtenirCarrers("groc")}
+                +--------+> {log[11]} +--------+ Diners: {dic.jugadors["groc"]['diners']}
+                |Muntan {casa[7]}{log[12]}   |Gracia {casa[23]} Especial:{obtenirCartes("groc")}
+                |{t[7]} {hotel[7]}{log[13]}   |{t[23]} {hotel[23]} 
+                +--------+----{casa[5]}+----{casa[4]}+--------+----{casa[2]}+----{casa[1]}+--------+ Jugador Taronja:
+                |{t[6]}  |{t[5]}  |{t[4]}  |{t[3]}  |{t[2]}  |{t[1]}  |{t[0]}  | Diners: {dic.jugadors["taronja"]['diners']}
+                |Presó   |Consell |Marina  |Sort    |Rosell  |Lauria  |Sortida | Carrers:{obtenirCarrers("taronja")}
+                +--------+--------+--------+--------+--------+--------+--------+ Especial:{obtenirCartes("taronja")}
     """)
 
 

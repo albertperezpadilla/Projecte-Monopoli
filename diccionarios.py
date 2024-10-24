@@ -1,7 +1,7 @@
 #Diccionarios
 #Banca
 banca = {
-    'diners': 500000,
+    'diners': 10000000,
     'carrers' : ['Lauria', 'Roselló', 'Marina', 'C. de cent', 'Muntaner', 'Aribau', 'Sant Joan', 'Aragó', 'Urquinaona', 'Fontana', 'Les Rambles', 'Pl. Catalunya', 'P. Àngel', 'Via Augusta', 'Balmes', 'Pg. de Gràcia']
 
 }
