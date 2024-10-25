@@ -4,7 +4,7 @@ import diccionarios as dic
 import cartas as ct
 import uso_general as ug
 import os,copy
-
+import historial as h
 colors_modificats = False
 ordenats = False
 icolor = 0
@@ -41,7 +41,7 @@ def tirar_dados(color):
     dau2 = 0
     suma = dau1 + dau2
     dic.jugadors[color]['posicio'] += suma 
-    tb.afegir_historial(f"> Juga \"{dic.jugadors[color]['inicial']}\", ha sortit {dau1} i {dau2}")
+    h.afegir_historial(f"> Juga \"{dic.jugadors[color]['inicial']}\", ha sortit {dau1} i {dau2}")
 
 
 
@@ -106,7 +106,7 @@ def taulellDibuixar():
     # Ajuste de espacios para los jugadores
     for i in range(len(t)):
         t[i] = t[i].ljust(6)
-    log = tb.dibuixa_historial() 
+    log = h.dibuixa_historial() 
     print(f"""
                 +--------+----{casa[13]}+----{casa[14]}+--------+----{casa[16]}+---{casa[17]}+---------+ Banca:
                 |Parking |Urquinao|Fontana |Sort    |Rambles |Pl.Cat  |Anr pró | Diners: {dic.banca['diners']}

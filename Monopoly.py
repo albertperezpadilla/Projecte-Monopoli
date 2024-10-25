@@ -1,4 +1,5 @@
 # Aquí haremos el monopoly
+import historial as h
 import copy
 import diccionarios as dic
 import tablero as tb
@@ -43,10 +44,10 @@ def jugar_partida():
                                     nom_carrer = carrer
                                     break
                             if dic.carrers[nom_carrer]["Propietari"] != color and dic.carrers[nom_carrer]["Propietari"] != "banca":
-                                if ug.totalPagar(color) > dic.jugadors[color]['diners'] and dic.jugadors[color]['total casas'] == 0 and dic.jugadors[color]['total hoteles'] == 0:
+                                if ug.verificar_bancarrota(color):
                                     bancarrota += 1
-                                    tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" está en bancarrota")
                                     colors.remove(color)
+
                         ct.casillas_especiales(color)
                         ug.totalPagar(color)
                         pr.taulellDibuixar()              

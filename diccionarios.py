@@ -11,7 +11,7 @@ jugadors = {
         'inicial': 'G',
         'diners': 2000,
         'cartes' : [],
-        'carrers': [],
+        'carrers': ['Lauria'],
         'total casas': 0,
         'total hoteles': 0,
         'posicio': 1,
@@ -31,7 +31,7 @@ jugadors = {
     },
     "vermell":  {
         'inicial': 'V',
-        'diners': 0,
+        'diners': 100,
         'cartes' : [],
         'carrers': [],
         'total casas': 0,

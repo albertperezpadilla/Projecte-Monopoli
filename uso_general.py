@@ -2,6 +2,7 @@
 import diccionarios as dic
 import tablero as tb
 import principals as pr
+import historial as h
 #Mostrar Preu:
 
 def actualiztar_tauler():
@@ -19,14 +20,14 @@ def mostrarPreu(color):
         preu_hotel = dic.carrers[carrer]["Cmp. Hotel"]
         propietari = dic.carrers[carrer]['Propietari']
         if pos_jugador == pos_carrer and propietari =="banca":
-            tb.afegir_historial(f"  Preu {carrer}:{preu_carrer}€")
+            h.afegir_historial(f"  Preu {carrer}:{preu_carrer}€")
         elif pos_jugador == pos_carrer and propietari == color:
-            tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" - Preu Casa: {preu_casa}")
-            tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" - Preu Hotel: {preu_hotel}")
+            h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" - Preu Casa: {preu_casa}")
+            h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" - Preu Hotel: {preu_hotel}")
 
             # Verificar si no se puede edificar
             if pos_jugador in [0, 3, 6, 9, 12, 15, 18, 21]:
-                tb.afegir_historial("  Aqui no es pot edificar!")
+                h.afegir_historial("  Aqui no es pot edificar!")
 
     actualiztar_tauler() 
 
@@ -40,8 +41,11 @@ def comprarTerreny(color):
         preu_carrer = dic.carrers[carrer]["Cmp. Trrny"]
         propietari = dic.carrers[carrer]["Propietari"]
         if pos_jugador == pos_carrer and int(diners_jugador) >= int(preu_carrer) and propietari == "banca":
-            tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" ha comprat {carrer}")
-            dic.jugadors[color]["diners"] -= int(preu_carrer)
+            h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" ha comprat {carrer}")
+            print(dic.jugadors[color]["diners"])
+            dic.jugadors[color]["diners"] = int(dic.jugadors[color]["diners"]) - preu_carrer
+
+
             dic.banca["diners"] += int(preu_carrer)
             dic.carrers[carrer]["Propietari"] = color
             dic.jugadors[color]["carrers"].append(carrer)
@@ -51,19 +55,18 @@ def comprarTerreny(color):
             break
             
         elif pos_jugador == pos_carrer and propietari != "banca":
-            tb.afegir_historial(f"  Aquesta casella ja té propietari: {propietari}.")
+            h.afegir_historial(f"  Aquesta casella ja té propietari: {propietari}.")
         elif pos_jugador in [0, 3, 6, 9, 12, 15, 18, 21]:
-            tb.afegir_historial("  Aquesta casella no està a la venda.")
+            h.afegir_historial("  Aquesta casella no està a la venda.")
 
     actualiztar_tauler()
-
 
 def edificarCasa(color):
     pos_jugador = dic.jugadors[color]["posicio"]
     diners_jugador = dic.jugadors[color]["diners"]
 
     if pos_jugador in [0, 3, 6, 9, 12, 15, 18, 21]:
-        tb.afegir_historial("  A aquesta casella no es pot edificar.")
+        h.afegir_historial("  A aquesta casella no es pot edificar.")
         return
     
     # Revisar si el jugador puede edificar en su posición actual
@@ -76,17 +79,17 @@ def edificarCasa(color):
             if propietari == color:
                     if comprobarCasas(carrer, 1):
                         if diners_jugador >= preu_casa:
-                            tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" ha comprat una casa.")
+                            h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" ha comprat una casa.")
                             dic.jugadors[color]["diners"] -= preu_casa
                             dic.banca["diners"] += preu_casa
                             dic.carrers[carrer]["Num. Cases"] += 1
                             dic.jugadors[color]["total casas"] += 1
                         else:
-                            tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" no té diners per comprar una casa.")
+                            h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" no té diners per comprar una casa.")
                     else:
-                        tb.afegir_historial(f"  No pots construir mes cases.")
+                        h.afegir_historial(f"  No pots construir mes cases.")
             else:
-                tb.afegir_historial(f"  No es teu! Es de: {propietari}.")
+                h.afegir_historial(f"  No es teu! Es de: {propietari}.")
                 break
 
 
@@ -97,7 +100,7 @@ def edificarHotel(color):
     diners_jugador = dic.jugadors[color]["diners"]
 
     if pos_jugador in [0, 3, 6, 9, 12, 15, 18, 21]:
-        tb.afegir_historial("  A aquesta casella no es pot edificar.")
+        h.afegir_historial("  A aquesta casella no es pot edificar.")
         return
     
     # Revisar si el jugador puede edificar en su posición actual
@@ -110,7 +113,7 @@ def edificarHotel(color):
             if propietari == color:
                     if comprobarHoteles(carrer, 1):
                         if diners_jugador >= preu_hotel and num_cases >= 2:
-                            tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" ha comprat un hotel.")
+                            h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" ha comprat un hotel.")
                             dic.jugadors[color]["diners"] -= preu_hotel
                             dic.banca["diners"] += preu_hotel
                             dic.carrers[carrer]["Num. Hoteles"] += 1
@@ -119,13 +122,13 @@ def edificarHotel(color):
                             dic.jugadors[color]["total casas"] -= 1
                             print(dic.carrers[carrer]["Num. Hoteles"])
                         elif num_cases < 2:
-                            tb.afegir_historial(f"  Falten cases per un hotel")
+                            h.afegir_historial(f"  Falten cases per un hotel")
                         else:
-                            tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" no té diners per comprar un hotel.")
+                            h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" no té diners per comprar un hotel.")
                     else:
-                        tb.afegir_historial(f"  No pots construir mes hotels.")
+                        h.afegir_historial(f"  No pots construir mes hotels.")
             else:
-                tb.afegir_historial(f"  No es teu! Es de: {propietari}.")
+                h.afegir_historial(f"  No es teu! Es de: {propietari}.")
                 break
 
 
@@ -134,39 +137,40 @@ def edificarHotel(color):
 #Alquiler a pagar
 def totalPagar(color):
     posicion_actual = dic.jugadors[color]['posicio']
-    diners_actuals = dic.jugadors[color]['diners']
+    diners_actuals = int(dic.jugadors[color]['diners'])
     total_lloguer = 0  # Inicializar el total a pagar
-    
+
     for dades_carrer in dic.carrers.values():
         if dades_carrer['posicio'] == posicion_actual:
             propietari = dades_carrer['Propietari']
             if propietari != "banca" and propietari != color:
                 num_cases = dades_carrer["Num. Cases"]
                 num_hotels = dades_carrer["Num. Hoteles"]
-                
+
                 if num_cases == 0 and num_hotels == 0:
-                    tb.afegir_historial("  No hi ha cases ni hotels.")
+                    h.afegir_historial("  No hi ha cases ni hotels.")
                 else:
                     ll_casas = dades_carrer["Ll. Casa"] * num_cases
                     ll_hotels = dades_carrer["Ll. Hotel"] * num_hotels
                     total_lloguer = ll_casas + ll_hotels
-                    
+
                     # Comprobar si el jugador tiene suficiente dinero
                     if int(total_lloguer) > int(diners_actuals):
-                        tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" no pot pagar a \"{dic.jugadors[propietari]['inicial']}\".")
+                        h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" no pot pagar a \"{dic.jugadors[propietari]['inicial']}\".")
                     else:
                         # Actualizar el dinero del propietario
                         dic.jugadors[propietari]['diners'] += total_lloguer
-                        diners_actuals = int(diners_actuals)  
-                        diners_actuals -= int(total_lloguer)
-                        tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" paga {total_lloguer} a \"{dic.jugadors[propietari]['inicial']}\"")
+                        (diners_actuals) -= int(total_lloguer)  
+                        dic.jugadors[color]['diners'] = diners_actuals 
+                        h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" paga {total_lloguer} a \"{dic.jugadors[propietari]['inicial']}\"")
+                        
     actualiztar_tauler()
     return total_lloguer
 
       
 #Valor vender todas las propiedades a otro jugador/banca
 def totalVendre(color):
-    preu_total = 0  # Inicializa el precio total a 0
+    preu_total = 0 
     carrers_color = dic.jugadors[color]['carrers']
 
     for carrer in carrers_color:
@@ -199,32 +203,50 @@ def vendre_banc(color):
     propietats = dic.jugadors[color]['carrers']
     diners_jugador = dic.jugadors[color]['diners']
     propietats_banca = dic.banca['carrers']
+    if len(propietats) == 0:
+        print(f"  \"{dic.jugadors[color]['inicial']}\" no te propietats")
+        verificar_bancarrota(color)
+    else:
+        for carrer in propietats:
+            propietats_banca.append(carrer)
+            quantitat = totalVendre(color) * 0.5
+            diners_jugador += quantitat
+            propietats.remove(carrer)
+            dic.carrers[carrer]['Num. Cases'] = 0
+            dic.carrers[carrer]['Num. Hoteles'] = 0
+            print(dic.carrers[carrer]['Propietari'])
+            dic.carrers[carrer]['Propietari'] = "banca"
+            print(dic.carrers[carrer]['Propietari'])
+        return diners_jugador
 
-    for carrer in propietats:
-        propietats_banca.append(carrer)
-        propietats.remove(carrer)
-        quantitat = totalVendre(color) * 0.5
-        diners_jugador += quantitat
-        dic.carrers[carrer]['Num. Cases'] = 0
-        dic.carrers[carrer]['Num. Hoteles'] = 0
-        dic.carrers[carrer]['Propietari'] = "banca"
-        actualiztar_tauler()
-    return diners_jugador
+def vendre_a_jugador(venedor, nou_propietari):
+    import tablero as tb
+    propietats = dic.jugadors[venedor]['carrers']
+    diners_jugador = dic.jugadors[nou_propietari]['diners']
+    propietats_venedor = dic.jugadors[nou_propietari]['carrers']
+    print("Propietats:", propietats)
+    print("Propietats Venedor:", propietats_venedor)
+    if len(propietats) == 0:
+        print(f"  \"{dic.jugadors[venedor]['inicial']}\" no te propietats")
+        verificar_bancarrota(venedor)
+    else:
+        for carrer in propietats: 
+                propietats_venedor.append(carrer)
+                quantitat = totalVendre(venedor) * 0.9
+                diners_jugador += quantitat
+                propietats.remove(carrer)
+                dic.carrers[carrer]['Propietari'] = nou_propietari
+                h.afegir_historial(f"{  dic.jugadors[venedor]['inicial']} ha venut tot a {dic.jugadors[nou_propietari]['inicial']}") 
+        return diners_jugador
 
-def vendre_a_jugador(color,venedor):
-    propietats = dic.jugadors[color]['carrers']
-    diners_jugador = dic.jugadors[color]['diners']
-    propietats_venedor = dic.jugadors[venedor]['carrers']
+def verificar_bancarrota(color):
+        if totalPagar(color) > dic.jugadors[color]['diners'] and dic.jugadors[color]['total casas'] == 0 and dic.jugadors[color]['total hoteles'] == 0:
+            h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" está en bancarrota")
+            actualiztar_tauler()
+            return True
+        else:
+            return False
 
-    for carrer in propietats[:]:
-        propietats_venedor.append(carrer)
-        propietats.remove(carrer)
-        quantitat = totalVendre(color) * 0.9
-        diners_jugador += quantitat
-        dic.carrers[carrer]['Propietari'] = venedor
-        tb.afegir_historial(f"{dic.jugadors[color]['inicial']} ha venut tot a {dic.jugadors[venedor]['inicial']}")
-        actualiztar_tauler()
-    return diners_jugador
 
 
 def fer_opcions(color):
@@ -239,7 +261,7 @@ def fer_opcions(color):
                 if dic.jugadors[color]["posicio"] == 12:
                     break
                 if opcio == "passar":
-                    tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" passa el torn.")
+                    h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" passa el torn.")
                     break  
                 elif opcio == "comprar terreny":
                     comprarTerreny(color)
@@ -251,27 +273,35 @@ def fer_opcions(color):
                 elif opcio == "preus":
                     mostrarPreu(color)
                 elif opcio == "preu jugador":
-                    tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" guanyará: {totalVendre(color) * 0.9}")
+                    h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" guanyará: {totalVendre(color) * 0.9}")
                     actualiztar_tauler()
                 elif opcio == "preu banc":
-                    tb.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" guanyará: {totalVendre(color) * 0.5}")
+                    h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" guanyará: {totalVendre(color) * 0.5}")
                     actualiztar_tauler()
                 elif opcio == "vendre al banc":
-                        vendre_banc(color)
+                        if verificar_bancarrota(color):
+                            h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" està en bancarrota")
+                            break
+                        else:
+                            vendre_banc(color)
                 tmp = dic.jugadors.copy()
                 del tmp[color]
                 for jugador in tmp:
                     if opcio == f"vendre a {jugador}":
-                        if jugador == 'G':
-                            vendre_a_jugador(color,"groc")
-                            actualiztar_tauler()
+                        if verificar_bancarrota(color):
+                            h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" està en bancarrota")
+                            break
+                        else:            
+                            if jugador == 'G':
+                                vendre_a_jugador(color,"groc")
+                                actualiztar_tauler()
 
-                        elif jugador == 'T':
-                            vendre_a_jugador(color,"taronja")
-                        elif jugador == 'V':
-                            vendre_a_jugador(color,"vermell")
-                        elif jugador == 'B':
-                            vendre_a_jugador(color,"blau")
+                            elif jugador == 'T':
+                                vendre_a_jugador(color,"taronja")
+                            elif jugador == 'V':
+                                vendre_a_jugador(color,"vermell")
+                            elif jugador == 'B':
+                                vendre_a_jugador(color,"blau")
 
             else:
                 print("Aquesta opció no està disponible")
