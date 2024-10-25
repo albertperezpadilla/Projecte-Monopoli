@@ -11,7 +11,7 @@ jugadors = {
         'inicial': 'G',
         'diners': 2000,
         'cartes' : [],
-        'carrers': ['Lauria'],
+        'carrers': [],
         'total casas': 0,
         'total hoteles': 0,
         'posicio': 1,

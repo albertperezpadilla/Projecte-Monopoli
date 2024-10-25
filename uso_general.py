@@ -200,44 +200,59 @@ def comprobarHoteles(nom_carrer, x):
     return False
 
 def vendre_banc(color):
+    if verificar_bancarrota(color):
+        print(f"  \"{dic.jugadors[color]['inicial']}\" está en bancarrota.")
+        return dic.jugadors[color]['diners']  
+
     propietats = dic.jugadors[color]['carrers']
     diners_jugador = dic.jugadors[color]['diners']
     propietats_banca = dic.banca['carrers']
+    
     if len(propietats) == 0:
-        print(f"  \"{dic.jugadors[color]['inicial']}\" no te propietats")
+        print(f"  \"{dic.jugadors[color]['inicial']}\" no té propietats.")
         verificar_bancarrota(color)
-    else:
-        for carrer in propietats:
-            propietats_banca.append(carrer)
-            quantitat = totalVendre(color) * 0.5
-            diners_jugador += quantitat
-            propietats.remove(carrer)
-            dic.carrers[carrer]['Num. Cases'] = 0
-            dic.carrers[carrer]['Num. Hoteles'] = 0
-            print(dic.carrers[carrer]['Propietari'])
-            dic.carrers[carrer]['Propietari'] = "banca"
-            print(dic.carrers[carrer]['Propietari'])
-        return diners_jugador
+        return diners_jugador  
+
+    for carrer in propietats:
+        propietats_banca.append(carrer)
+        quantitat = totalVendre(color) * 0.5
+        diners_jugador += quantitat
+        propietats.remove(carrer)
+        dic.carrers[carrer]['Num. Cases'] = 0
+        dic.carrers[carrer]['Num. Hoteles'] = 0
+        dic.carrers[carrer]['Propietari'] = "banca"
+
+    dic.jugadors[color]['diners'] = diners_jugador 
+    h.afegir_historial(f"  \"{dic.jugadors[color]['inicial']}\" ha venut tot a la banca +{diners_jugador}.")
+    return diners_jugador
+
+
 
 def vendre_a_jugador(venedor, nou_propietari):
-    import tablero as tb
+    if verificar_bancarrota(venedor):
+        print(f"  \"{dic.jugadors[venedor]['inicial']}\" no puede vender propiedades porque está en bancarrota.")
+        return dic.jugadors[nou_propietari]['diners']  
+
     propietats = dic.jugadors[venedor]['carrers']
     diners_jugador = dic.jugadors[nou_propietari]['diners']
-    propietats_venedor = dic.jugadors[nou_propietari]['carrers']
-    print("Propietats:", propietats)
-    print("Propietats Venedor:", propietats_venedor)
+    propietats_venedor = dic.jugadors[venedor]['carrers']
+
     if len(propietats) == 0:
-        print(f"  \"{dic.jugadors[venedor]['inicial']}\" no te propietats")
+        print(f"  \"{dic.jugadors[venedor]['inicial']}\" no tiene propiedades.")
         verificar_bancarrota(venedor)
-    else:
-        for carrer in propietats: 
-                propietats_venedor.append(carrer)
-                quantitat = totalVendre(venedor) * 0.9
-                diners_jugador += quantitat
-                propietats.remove(carrer)
-                dic.carrers[carrer]['Propietari'] = nou_propietari
-                h.afegir_historial(f"{  dic.jugadors[venedor]['inicial']} ha venut tot a {dic.jugadors[nou_propietari]['inicial']}") 
-        return diners_jugador
+        return diners_jugador 
+
+    for carrer in propietats:
+        propietats_venedor.append(carrer)
+        quantitat = totalVendre(venedor) * 0.9
+        diners_jugador += quantitat
+        propietats.remove(carrer)
+        dic.carrers[carrer]['Propietari'] = nou_propietari
+        h.afegir_historial(f"{dic.jugadors[venedor]['inicial']} ha venut tot a {dic.jugadors[nou_propietari]['inicial']}.")
+
+    dic.jugadors[nou_propietari]['diners'] = diners_jugador  
+    return diners_jugador
+
 
 def verificar_bancarrota(color):
         if totalPagar(color) > dic.jugadors[color]['diners'] and dic.jugadors[color]['total casas'] == 0 and dic.jugadors[color]['total hoteles'] == 0:
